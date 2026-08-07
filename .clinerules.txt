@@ -1,0 +1,24 @@
+Project: Subscription Guard
+
+General rules:
+- Inspect existing files before proposing changes.
+- Make the smallest safe change necessary.
+- Do not modify files unless the user explicitly requests implementation.
+- Never expose, print, commit, or modify secrets in .env files.
+- Never invent Supabase table names, environment variables, or API behavior.
+- Ask before deleting files, changing dependencies, changing database schemas, or running destructive commands.
+- After code changes, run the relevant lint or test command when available.
+- Report exactly which files were changed.
+
+Security rules:
+- Treat authentication, magic links, OTPs, sessions, Supabase policies, and subscription data as security-sensitive.
+- Keep cancellation human-in-the-loop; never automatically submit merchant cancellation forms.
+- Check authorization boundaries before changing routes or server actions.
+- Do not bypass authentication or row-level security.
+- Do not place service-role keys in client-side code.
+
+Workflow:
+- For planning, inspect first and provide a concise plan.
+- For implementation, change one logical unit at a time.
+- Verify the result after each change.
+- If a tool call fails, do not repeat it blindly; explain the failure and try a different approach.
