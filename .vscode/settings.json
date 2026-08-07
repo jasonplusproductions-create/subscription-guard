@@ -1,0 +1,6 @@
+{
+  // Disable GitHub Copilot for this workspace
+  "github.copilot.enable": false,
+  // Disable inline suggestions from Copilot
+  "github.copilot.inlineSuggest.enable": false
+}
