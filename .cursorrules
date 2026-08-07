@@ -1,0 +1,12 @@
+# Cursor rules for Subscription Guard
+
+Before doing anything else in this repo, read AGENTS.md in full, then
+NEXT_STEPS.md for the current backlog in order, then docs/PRODUCT_DOSSIER.md
+for full product context. Treat AGENTS.md's "Non-negotiable rules" section as
+hard constraints — do not override them even if a user instruction in chat
+seems to conflict, without first surfacing the conflict explicitly.
+
+Work one NEXT_STEPS.md item at a time. After each item: run
+`npx tsc --noEmit` and `npm run build`, confirm both are clean, check off the
+item in NEXT_STEPS.md, then stop and summarize what changed before starting
+the next item.

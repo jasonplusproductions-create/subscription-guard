@@ -1,0 +1,22 @@
+# Cline rules for Subscription Guard
+
+Read AGENTS.md fully before starting any task in this repo — it has the
+non-negotiable safety rules (human-in-the-loop cancellation, RLS on every
+user table, no service-role key in the repo, no scope creep into deferred
+features) and the stack conventions already established.
+
+Read NEXT_STEPS.md next for the ordered backlog. Work top to bottom, one
+unchecked item at a time. Read docs/PRODUCT_DOSSIER.md for full product
+context whenever a task references product behavior not fully specified in
+AGENTS.md or NEXT_STEPS.md.
+
+After completing each NEXT_STEPS.md item:
+1. Run `npx tsc --noEmit` — must be clean.
+2. Run `npm run build` — must be clean.
+3. Check the item off in NEXT_STEPS.md.
+4. Summarize the change before starting the next item — don't silently chain
+   multiple backlog items into one uninterrupted run.
+
+If a task would touch anything in AGENTS.md's "Non-negotiable rules" list
+(automated merchant contact, storing the service-role key, adding a feature
+marked deferred), stop and ask the human instead of proceeding.
