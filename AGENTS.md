@@ -117,9 +117,12 @@ features beyond Launch 2 are cataloged in `docs/ULTIMATE_FEATURES_SCOPE.md`.
 - **Migrations:** SQL lives under `supabase/migrations/`. Apply with
   `supabase link --project-ref iaxokwbqerodpbsmnxfh && supabase db push` when
   CLI credentials are available; otherwise flag the human to apply.
-- **Verify:** After code changes, run `npx tsc --noEmit` and `npm run build`
-  (both must pass). `npm run lint` prompts for ESLint setup interactively if
-  no config is committed — not a release gate for this repo.
+- **Verify:** `npm run verify` (typecheck + lint + build). CI runs the same on PRs.
+- **Env setup:** `npm run setup:env` copies `.env.example` → `.env.local`.
+- **Migrations:** `npm run db:push` when Supabase CLI is linked.
+- **Reminder cron:** Vercel Cron hits `/api/cron/send-reminders` hourly when
+  `CRON_SECRET` + `SUPABASE_SERVICE_ROLE_KEY` are set (see
+  `docs/REMINDER_CRON_SPEC.md`). Optional `RESEND_API_KEY` for real email.
 - **Blocked on human:** service-role key, Plaid/card-issuer credentials, email
   provider for reminder cron, Vercel deploy, beta invites, legal review of
   `/privacy` and `/terms`.

@@ -79,7 +79,8 @@ require human credentials and review.
 - [x] Build a Supabase Edge Function (or documented cron job spec if no
       Edge Function deploy access in this environment) that runs hourly,
       finds due notifications, and sends email via the chosen provider —
-      stub at `supabase/functions/send-reminders/` + `docs/REMINDER_CRON_SPEC.md`
+      automated at `app/api/cron/send-reminders` + `vercel.json` cron;
+      Resend optional (`docs/REMINDER_CRON_SPEC.md`)
 - [x] Add reminder preferences (per-subscription mute/snooze) — migration
       `20260811000001_reminder_preferences.sql`
 - [x] Add dashboard summary cards: monthly recurring spend, annual
