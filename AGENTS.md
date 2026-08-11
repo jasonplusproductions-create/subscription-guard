@@ -10,7 +10,8 @@ A consumer app that tracks subscriptions and trials, warns users before
 renewal, helps them cancel with a documented evidence trail, and watches for
 charges after cancellation. Full product spec, phased roadmap, and schema
 rationale live in `docs/PRODUCT_DOSSIER.md` — read it before making any
-product decision not covered by this file or `NEXT_STEPS.md`.
+product decision not covered by this file or `NEXT_STEPS.md`. Phased
+features beyond Launch 2 are cataloged in `docs/ULTIMATE_FEATURES_SCOPE.md`.
 
 ## Non-negotiable rules (do not "improve" these away)
 
