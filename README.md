@@ -37,14 +37,31 @@ project (`iaxokwbqerodpbsmnxfh`). Schema and RLS are already applied.
 ## 1. Install and run locally
 
 ```bash
-cd subscription-guard
 npm install
+npm run setup:env   # creates .env.local from .env.example — add your keys
 npm run dev
 ```
 
-Visit `http://localhost:3000`. `.env.local` already points at the real
-Supabase project using the public **publishable key** (safe to expose —
-it's protected by RLS, not secrecy).
+Visit `http://localhost:3000`. Fill in `.env.local` with the Supabase
+**publishable key** (safe to expose — RLS protects data, not key secrecy).
+
+### Automated checks
+
+```bash
+npm run verify      # typecheck + lint + build (same as CI)
+npm run db:push     # apply supabase/migrations (requires Supabase CLI + login)
+```
+
+GitHub Actions runs `npm run verify` on every push/PR to `main`.
+
+### Automated reminders (production)
+
+Hourly Vercel Cron calls `/api/cron/send-reminders`. Set these **server-only**
+env vars in Vercel: `CRON_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`, and optionally
+`RESEND_API_KEY` + `REMINDER_FROM_EMAIL`. See `docs/REMINDER_CRON_SPEC.md`.
+
+**Not automated (by design):** merchant cancellation submission — always
+requires explicit user approval in the app.
 
 ## 2. One manual step: Supabase Auth dashboard settings
 

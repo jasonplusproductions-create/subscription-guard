@@ -11,6 +11,9 @@ Subscription Guard is a consumer subscription-protection app. It helps users
 discover recurring charges, track free trials and renewals, prepare and
 document cancellations, and monitor for charges after cancellation.
 
+Long-term phased features beyond Launch 1 and Launch 2 are cataloged in
+`docs/ULTIMATE_FEATURES_SCOPE.md` (phase, dependencies, and non-goals).
+
 The long-term product vision combines:
 
 - Existing bank and credit-card monitoring

@@ -10,7 +10,8 @@ A consumer app that tracks subscriptions and trials, warns users before
 renewal, helps them cancel with a documented evidence trail, and watches for
 charges after cancellation. Full product spec, phased roadmap, and schema
 rationale live in `docs/PRODUCT_DOSSIER.md` — read it before making any
-product decision not covered by this file or `NEXT_STEPS.md`.
+product decision not covered by this file or `NEXT_STEPS.md`. Phased
+features beyond Launch 2 are cataloged in `docs/ULTIMATE_FEATURES_SCOPE.md`.
 
 ## Non-negotiable rules (do not "improve" these away)
 
@@ -102,3 +103,26 @@ product decision not covered by this file or `NEXT_STEPS.md`.
   React, Tailwind). If a task genuinely needs something else (e.g. a date
   library, a queue client for Phase 2), that's fine — just don't reach for
   a heavy framework change.
+
+## Cursor Cloud specific instructions
+
+- **Install:** `npm install` (update script). No Docker or Supabase CLI required
+  for local Next.js dev.
+- **Env:** Create `.env.local` (gitignored) with `NEXT_PUBLIC_SUPABASE_URL` and
+  `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from the Supabase dashboard (project
+  ref `iaxokwbqerodpbsmnxfh`). Without these, middleware/auth routes fail at
+  runtime even though `npm run build` succeeds.
+- **Dev server:** `npm run dev` → `http://localhost:3000`. Use tmux for
+  long-running dev processes in Cloud Agent VMs.
+- **Migrations:** SQL lives under `supabase/migrations/`. Apply with
+  `supabase link --project-ref iaxokwbqerodpbsmnxfh && supabase db push` when
+  CLI credentials are available; otherwise flag the human to apply.
+- **Verify:** `npm run verify` (typecheck + lint + build). CI runs the same on PRs.
+- **Env setup:** `npm run setup:env` copies `.env.example` → `.env.local`.
+- **Migrations:** `npm run db:push` when Supabase CLI is linked.
+- **Reminder cron:** Vercel Cron hits `/api/cron/send-reminders` hourly when
+  `CRON_SECRET` + `SUPABASE_SERVICE_ROLE_KEY` are set (see
+  `docs/REMINDER_CRON_SPEC.md`). Optional `RESEND_API_KEY` for real email.
+- **Blocked on human:** service-role key, Plaid/card-issuer credentials, email
+  provider for reminder cron, Vercel deploy, beta invites, legal review of
+  `/privacy` and `/terms`.

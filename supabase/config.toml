@@ -1,0 +1,6 @@
+# Supabase CLI — link with:
+#   supabase link --project-ref iaxokwbqerodpbsmnxfh
+project_id = "iaxokwbqerodpbsmnxfh"
+
+[db.migrations]
+enabled = true

@@ -19,6 +19,15 @@ export default function Home() {
       >
         Sign in
       </Link>
+      <p className="mt-10 text-sm text-ink/50">
+        <Link href="/privacy" className="underline hover:text-ink/70">
+          Privacy
+        </Link>
+        {" · "}
+        <Link href="/terms" className="underline hover:text-ink/70">
+          Terms
+        </Link>
+      </p>
     </main>
   );
 }
