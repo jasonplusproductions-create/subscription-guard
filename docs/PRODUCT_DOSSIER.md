@@ -13,6 +13,7 @@ document cancellations, and monitor for charges after cancellation.
 
 Long-term phased features beyond Launch 1 and Launch 2 are cataloged in
 `docs/ULTIMATE_FEATURES_SCOPE.md` (phase, dependencies, and non-goals).
+Current gates: `docs/BLOCKERS.md`.
 
 The long-term product vision combines:
 
