@@ -1,8 +1,8 @@
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function SupabaseTestPage() {
-  const supabase = createClient();
-  const { data, error } = await supabase.auth.getSession();
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
 
   return (
     <main className="min-h-screen p-10">
@@ -10,8 +10,8 @@ export default async function SupabaseTestPage() {
       <p className="mt-4">
         {error
           ? `Connection error: ${error.message}`
-          : `Supabase client is working. Session: ${
-              data.session ? "active" : "none"
+          : `Supabase client is working. User: ${
+              data.user ? "authenticated" : "none"
             }`}
       </p>
     </main>
