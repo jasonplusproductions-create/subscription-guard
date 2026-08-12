@@ -48,6 +48,32 @@ Each feature has:
 | Payment reconciliation | Daily job matching payment events against subscription records | Needs `payment_events` table and dedupe logic |
 | `PAYMENT_BLOCKED` as distinct state | Never merges with `CANCELLED` in the state machine | Core to the non-negotiable safety rule |
 
+### Competitive reference: Cloaked Pay
+
+[Cloaked Pay](https://cloaked.com) (and similar products) market **a new virtual
+Mastercard number per purchase** so the consumer's real card stays private,
+often while keeping underlying-card rewards. That is **general payment privacy**.
+
+**Subscription Guard Phase 3 is a narrower, deliberate subset:**
+
+| Cloaked Pay–style (market) | Subscription Guard Phase 3 |
+|----------------------------|----------------------------|
+| New virtual number per purchase / merchant | **One virtual card per tracked subscription** |
+| Broad shopping privacy | **Renewal control**: merchant lock, amount cap, payment count, scheduled freeze |
+| User manages cards in a wallet app | Cards tied to **subscription state** + cancellation evidence trail |
+| Rewards depend on underlying card | Same constraint — **must confirm with issuer program**, not assumed |
+
+**Positioning:** "Cloaked for subscriptions" — not competing on every checkout,
+but on **recurring charges you already track**, with freeze/block labeled
+**payment blocked** (never **canceled**) and cancellation still **human-approved**.
+
+**Do not copy Cloaked's scope blindly.** Per-transaction issuing is higher
+volume, cost, and fraud surface than per-subscription cards. Start with
+one card per subscription; expand only after issuer economics and authorization
+webhooks are proven in production.
+
+Full issuer due-diligence checklist: `docs/PHASE3_ISSUER_EVALUATION.md`.
+
 ---
 
 ## Phase 4: Browser Automation (Trial Detection & Cancellation Assist)
