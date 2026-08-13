@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Jason Hackner Music | Soul &amp; Pop</title>
+    <meta name="description" content="Jason Hackner Music — hopeful classic soul and pop from Charlotte. Live Motown, R&amp;B, and favorites for venues, events, and festivals.">
+    <meta name="author" content="Jason Hackner">
+    <meta property="og:title" content="Jason Hackner Music">
+    <meta property="og:description" content="Hopeful classic soul &amp; pop from Charlotte. Live Motown, R&amp;B, and favorites.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mlc.jasonplusproductions.com/">
+    <meta property="og:image" content="https://mlc.jasonplusproductions.com/jason-hackner-headshot.jpg">
+    <meta property="og:site_name" content="Jason Hackner Music">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jason Hackner Music">
+    <meta name="twitter:description" content="Hopeful classic soul &amp; pop from Charlotte.">
+    <link rel="canonical" href="https://mlc.jasonplusproductions.com/">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Jason Hackner Music",
+      "alternateName": ["Jason Hackner", "Jason Plus the MLC"],
+      "url": "https://mlc.jasonplusproductions.com/",
+      "genre": ["Soul", "R&B", "Pop", "Motown"],
+      "email": "jasonhacknermusic@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "addressCountry": "US"
+      },
+      "member": {
+        "@type": "Person",
+        "name": "Jason Hackner",
+        "jobTitle": "Vocalist"
+      }
+    }
+    </script>
+    <style>
+        :root {
+            --sun: #E8A317;
+            --amber: #D97706;
+            --coral: #E85D3A;
+            --sky: #5B8FB8;
+            --ink: #1A1714;
+            --ink-soft: #5C534A;
+            --surface: #F7F3EC;
+            --surface-2: #EFE8DC;
+            --line: rgba(26, 23, 20, 0.12);
+            --transition: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            color: var(--ink);
+            background: var(--surface);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: background 0.25s var(--transition), box-shadow 0.25s var(--transition);
+        }
+
+        nav:not(.scrolled) .logo-text,
+        nav:not(.scrolled) .nav-links a,
+        nav:not(.scrolled) .social-links a {
+            color: rgba(247, 243, 236, 0.88);
+        }
+
+        nav:not(.scrolled) .nav-links a:hover,
+        nav:not(.scrolled) .social-links a:hover {
+            color: #fff;
+        }
+
+        nav:not(.scrolled) .mobile-menu-toggle span {
+            background: #F7F3EC;
+        }
+
+        nav.scrolled {
+            background: rgba(247, 243, 236, 0.96);
+            box-shadow: 0 1px 0 var(--line);
+        }
+
+        nav.scrolled .logo-text { color: var(--ink); }
+        nav.scrolled .nav-links a { color: var(--ink-soft); }
+        nav.scrolled .social-links a { color: var(--ink-soft); }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 2px;
+            background: linear-gradient(160deg, var(--sun) 0%, var(--coral) 100%);
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--coral);
+            transition: width 0.25s var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.nav-merch { color: var(--coral); }
+
+        .social-links { display: flex; gap: 0.85rem; }
+
+        .social-links a {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover { color: var(--coral); }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: 0.3s;
+        }
+
+        /* ===== HERO: brand-first, solo headshot ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 640px;
+            overflow: hidden;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            background: #1a1714;
+        }
+
+        .hero-carousel { position: absolute; inset: 0; }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s var(--transition);
+        }
+
+        .hero-slide.active { opacity: 1; }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    105deg,
+                    rgba(26, 23, 20, 0.88) 0%,
+                    rgba(26, 23, 20, 0.55) 42%,
+                    rgba(26, 23, 20, 0.15) 70%,
+                    transparent 100%
+                ),
+                linear-gradient(
+                    to top,
+                    rgba(26, 23, 20, 0.55) 0%,
+                    transparent 45%
+                );
+        }
+
+        .hero-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 6vw 14vh;
+            z-index: 10;
+            max-width: 780px;
+        }
+
+        .hero-brand {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 8vw, 6.25rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            color: #F7F3EC;
+            animation: riseIn 0.7s var(--transition) forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .hero-brand em {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--sun);
+            display: block;
+            font-size: 0.38em;
+            letter-spacing: 0.14em;
+            margin-top: 0.45em;
+            text-transform: uppercase;
+            font-family: 'Karla', sans-serif;
+        }
+
+        .hero-line {
+            margin-top: 1.1rem;
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            font-weight: 500;
+            color: rgba(247, 243, 236, 0.82);
+            max-width: 26rem;
+            animation: riseIn 0.7s 0.1s var(--transition) forwards;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .hero-cta {
+            margin-top: 1.6rem;
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            animation: riseIn 0.7s 0.2s var(--transition) forwards;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        @keyframes riseIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 1.7rem;
+            background: var(--coral);
+            border: 2px solid var(--coral);
+            color: #fff;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s var(--transition), border-color 0.2s, color 0.2s;
+        }
+
+        .cta-button:hover {
+            background: var(--amber);
+            border-color: var(--amber);
+        }
+
+        .cta-button.cta-ghost {
+            background: transparent;
+            border: 2px solid rgba(247, 243, 236, 0.55);
+            color: #F7F3EC;
+        }
+
+        .cta-button.cta-ghost:hover {
+            border-color: #F7F3EC;
+            background: rgba(247, 243, 236, 0.08);
+        }
+
+        .cta-button.cta-primary {
+            background: var(--coral);
+            border-color: var(--coral);
+            color: #fff;
+        }
+
+        /* Buttons outside hero stay ink-readable on light surfaces */
+        section:not(.hero) .cta-button.cta-ghost,
+        #about .cta-button.cta-ghost {
+            border-color: rgba(26, 23, 20, 0.35);
+            color: var(--ink);
+        }
+
+        section:not(.hero) .cta-button:not(.cta-ghost),
+        #about .cta-button:not(.cta-ghost) {
+            color: #fff;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 18px; height: 18px;
+            border-right: 2px solid var(--ink-soft);
+            border-bottom: 2px solid var(--ink-soft);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(8px); }
+            60% { transform: translateX(-50%) translateY(4px); }
+        }
+
+        .carousel-indicators { display: none; }
+
+        section {
+            padding: 6.5rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .section-header {
+            text-align: left;
+            margin-bottom: 2.75rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+
+        .section-subtitle {
+            color: var(--ink-soft);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* About */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+            box-shadow: 0 12px 32px rgba(26, 23, 20, 0.12);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: auto -0.75rem -0.75rem auto;
+            width: 40%;
+            height: 40%;
+            background: var(--sun);
+            z-index: -1;
+            opacity: 1;
+        }
+
+        .about-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            color: var(--ink);
+        }
+
+        .about-content p {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin-bottom: 1.15rem;
+            font-weight: 500;
+        }
+
+        .about-content strong { color: var(--ink); }
+
+        .about-content .past-collaborators {
+            font-size: 0.95rem;
+            padding-left: 0.9rem;
+            border-left: 3px solid var(--sun);
+        }
+
+        .about-photo-strip {
+            display: flex;
+            gap: 0.65rem;
+            margin: 1.25rem 0;
+        }
+
+        .about-photo-strip img {
+            width: 68px;
+            height: 68px;
+            object-fit: cover;
+            opacity: 0.92;
+            transition: transform 0.3s var(--transition), opacity 0.3s;
+        }
+
+        .about-photo-strip img:hover {
+            transform: translateY(-3px);
+            opacity: 1;
+        }
+
+        /* Music */
+        #music {
+            max-width: none;
+            margin: 0;
+            padding: 6.5rem 4rem;
+            background: var(--surface-2);
+        }
+
+        #music .section-header,
+        #music .music-grid,
+        #music .music-player-status {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .music-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            padding: 1.75rem 1.5rem;
+            cursor: pointer;
+            transition: border-color 0.2s var(--transition), background 0.2s;
+        }
+
+        .music-card:hover {
+            background: #fff;
+            border-color: var(--coral);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .music-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.45rem;
+            margin-bottom: 0.4rem;
+            color: var(--ink);
+        }
+
+        .music-card p {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .music-card .listen-hint {
+            margin-top: 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--coral);
+        }
+
+        .music-audio { display: none; }
+
+        .music-player-status {
+            width: min(780px, 100%);
+            margin: 1rem auto 0;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(44, 33, 24, 0.12);
+            background: rgba(255, 255, 255, 0.55);
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+
+        .music-player-status.visible { display: block; }
+        .music-player-status strong { color: var(--ink); }
+
+        /* Photos */
+        #photos {
+            max-width: none;
+            margin: 0;
+            padding: 6.5rem 4rem;
+            background: var(--surface);
+        }
+
+        #photos .section-header { max-width: 1200px; margin: 0 auto 2.75rem; }
+
+        .gallery-grid {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 440px;
+            overflow: hidden;
+            box-shadow: 0 28px 60px rgba(44, 33, 24, 0.2);
+        }
+
+        .gallery-item {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
+            transform: scale(1.03);
+        }
+
+        .gallery-item.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .gallery-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-arrow {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(44, 33, 24, 0.15);
+            color: var(--ink);
+            font-family: 'Karla', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.65rem 1.1rem;
+            cursor: pointer;
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .gallery-arrow:hover {
+            background: var(--sun);
+            border-color: var(--amber);
+        }
+
+        .gallery-dots { display: flex; gap: 0.5rem; }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(44, 33, 24, 0.25);
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .gallery-dot.active {
+            background: var(--coral);
+            transform: scale(1.2);
+        }
+
+        /* Watch */
+        #watch { max-width: 900px; }
+
+        .video-embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.55);
+            background: rgba(44, 33, 24, 0.08);
+            box-shadow: 0 20px 50px rgba(44, 33, 24, 0.12);
+        }
+
+        .video-embed-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        /* Merch */
+        #merch {
+            max-width: none;
+            margin: 0;
+            padding: 6.5rem 4rem;
+            background: var(--surface-2);
+        }
+
+        .merch-wrap { max-width: 1200px; margin: 0 auto; }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .merch-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            overflow: hidden;
+            transition: transform 0.35s var(--transition), box-shadow 0.35s;
+        }
+
+        .merch-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(255, 107, 74, 0.18);
+        }
+
+        .merch-media {
+            position: relative;
+            height: 220px;
+            background: rgba(255, 246, 235, 0.6);
+        }
+
+        .merch-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .merch-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--coral);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.65rem;
+        }
+
+        .merch-body { padding: 1.35rem 1.25rem 1.25rem; }
+
+        .merch-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            margin-bottom: 0.35rem;
+            color: var(--ink);
+        }
+
+        .merch-desc {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .merch-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.85rem;
+        }
+
+        .merch-price {
+            font-family: 'Fraunces', serif;
+            color: var(--coral);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .merch-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .merch-actions a {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 0.7rem 0.9rem;
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: transform 0.2s, background 0.25s;
+        }
+
+        .merch-actions .btn-primary {
+            background: linear-gradient(135deg, var(--sun), var(--coral));
+            color: var(--ink);
+        }
+
+        .merch-actions .btn-primary:hover { transform: translateY(-1px); }
+
+        .merch-actions .btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid rgba(44, 33, 24, 0.25);
+        }
+
+        .merch-actions .btn-secondary:hover { border-color: var(--coral); }
+
+        .merch-note {
+            text-align: center;
+            color: var(--ink-soft);
+            margin-top: 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .merch-details {
+            margin-top: 0.85rem;
+            border-top: 1px solid rgba(44, 33, 24, 0.08);
+            padding-top: 0.75rem;
+        }
+
+        .merch-details summary {
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .coming-soon-wrapper { position: relative; }
+
+        .coming-soon-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 246, 235, 0.55);
+            
+        }
+
+        .coming-soon-badge {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .coming-soon-text {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            max-width: 420px;
+        }
+
+        .coming-soon-subtext {
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.85;
+        }
+
+        .merch-grid.blurred {
+            filter: blur(4px);
+            pointer-events: none;
+        }
+
+        /* Checkout */
+        .checkout-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 33, 24, 0.55);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .checkout-overlay.open { display: flex; }
+
+        .checkout-modal {
+            background: var(--cream-sky);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 60px rgba(44, 33, 24, 0.25);
+        }
+
+        .checkout-modal h3 {
+            padding: 1.25rem 1.5rem;
+            margin: 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            border-bottom: 1px solid rgba(44, 33, 24, 0.08);
+        }
+
+        .checkout-form { padding: 1.5rem; }
+
+        .checkout-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .checkout-form .form-row.single { grid-template-columns: 1fr; }
+
+        .checkout-form label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid rgba(44, 33, 24, 0.18);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--ink);
+            font-size: 0.95rem;
+            font-family: 'Karla', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-form input:focus {
+            outline: none;
+            border-color: var(--coral);
+        }
+
+        .checkout-form .form-group { margin-bottom: 0.35rem; }
+
+        .checkout-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .checkout-actions button {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Karla', sans-serif;
+            border: none;
+        }
+
+        .checkout-actions .btn-pay {
+            background: linear-gradient(135deg, var(--sun), var(--coral));
+            color: var(--ink);
+        }
+
+        .checkout-actions .btn-pay:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .checkout-actions .btn-cancel {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid rgba(44, 33, 24, 0.25);
+        }
+
+        .checkout-form .error-msg {
+            color: #c62828;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .checkout-form .error-msg.visible { display: block; }
+
+        /* Contact */
+        #contact { text-align: center; max-width: 800px; }
+
+        #contact .section-header { text-align: center; }
+
+        #contact > p {
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .gigsalad-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--coral);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .contact-email:hover { color: var(--amber); }
+
+        .mailchimp-signup {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .mailchimp-signup h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mailchimp-signup p {
+            color: var(--ink-soft);
+            margin-bottom: 1.15rem;
+        }
+
+        .mailchimp-form {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .mailchimp-form input[type="email"] {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(44, 33, 24, 0.18);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .mailchimp-form button {
+            padding: 0.85rem 1.5rem;
+            background: linear-gradient(135deg, var(--sun), var(--coral));
+            border: none;
+            color: var(--ink);
+            font-family: 'Karla', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .mailchimp-message { margin-top: 0.75rem; font-size: 0.9rem; }
+        .mailchimp-message.success { color: #2e7d32; }
+        .mailchimp-message.error { color: #c62828; }
+
+        .contact-photo-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2.5rem;
+            justify-content: center;
+        }
+
+        .contact-photo-row img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 4rem;
+            background: rgba(44, 33, 24, 0.88);
+            color: rgba(255, 246, 235, 0.75);
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer a {
+            color: var(--sun);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--peach); }
+
+        .footer-sublinks {
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        footer .social-links a { color: rgba(255, 246, 235, 0.7); }
+        footer .social-links a:hover { color: var(--sun); }
+
+        @media (max-width: 960px) {
+            nav { padding: 1rem 1.25rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                flex-direction: column;
+                background: rgba(255, 246, 235, 0.96);
+                padding: 1.25rem;
+                gap: 1rem;
+                box-shadow: 0 12px 30px rgba(44, 33, 24, 0.12);
+            }
+            .nav-links.open { display: flex; }
+            .mobile-menu-toggle { display: flex; }
+            .social-links { display: none; }
+            nav.scrolled .social-links,
+            .hero ~ * .social-links { }
+            section { padding: 4.5rem 1.5rem; }
+            #about { grid-template-columns: 1fr; gap: 2rem; }
+            .music-grid { grid-template-columns: 1fr; }
+            .hero-content { padding: 0 1.5rem 14vh; }
+            #music, #photos, #merch { padding: 4.5rem 1.5rem; }
+            footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+            .gallery-grid { height: 320px; }
+            .contact-photo-row img { width: 90px; height: 70px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span class="logo-text">Jason Hackner Music</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li><a href="#watch">Watch</a></li>
+            <li><a href="#merch" class="nav-merch">Merch</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer" title="Jason Plus Productions">Jason Plus</a></li>
+        </ul>
+        <div class="social-links">
+            <a href="https://www.facebook.com/JasonPlusTheMLC" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Follow on Facebook">f</a>
+            <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer" aria-label="GigSalad" title="Book on GigSalad">G</a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-carousel">
+            <div class="hero-slide active">
+                <img src="jason-hackner-headshot.jpg" alt="Jason Hackner solo headshot">
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-brand">
+                Jason Hackner
+                <em>Music</em>
+            </h1>
+            <p class="hero-line">Classic soul and pop — live from Charlotte.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="cta-button">Book a show</a>
+                <a href="#music" class="cta-button cta-ghost">Listen</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section id="about" class="reveal">
+        <div class="about-image">
+            <img src="JASON_AND_THE_MLC_020.JPG" alt="Jason Hackner on stage">
+        </div>
+        <div class="about-content">
+            <h2>About Jason Hackner</h2>
+            <p>Jason Hackner Music brings classic soul and pop to life in Charlotte — Motown warmth, R&amp;B groove, and the kind of live energy that fills a room with light.</p>
+            <p>From intimate venues to festival stages, Jason leads hopeful, high-spirit performances shaped by exceptional musicianship and a love for songs that move people.</p>
+            <p><strong>Often joined by:</strong> Scott McLaughlin, Guillermo Villar, Parker Foley, Faithful Gwenhah, Tom Hanchett, Paul Walker, Tony Arreaza, Shana Blake, Jenny Brooks, Tony Torres, and Boo English — with gratitude to John Tosco.</p>
+            <p class="past-collaborators"><strong>Formerly Jason Plus the MLC.</strong> Past collaborators: Mark Larson.</p>
+            <div class="about-photo-strip" aria-hidden="true">
+                <img src="gman1.jpg" alt="">
+                <img src="parker1.jpeg" alt="">
+                <img src="tosco_2022_christmas_pic_me_1.JPG" alt="">
+            </div>
+            <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer" class="cta-button">Book Jason Hackner</a>
+        </div>
+    </section>
+
+    <section id="music" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">The sound</h2>
+            <p class="section-subtitle">Tap a vibe to hear a taste of the live set</p>
+        </div>
+        <div class="music-grid">
+            <div class="music-card">
+                <h3>Classic soul</h3>
+                <p>Timeless Motown and R&amp;B that lift spirits and get people moving.</p>
+                <p class="listen-hint">Tap to listen · Higher Love</p>
+            </div>
+            <div class="music-card">
+                <h3>Pop favorites</h3>
+                <p>Beloved classics across the decades, delivered with warmth and fire.</p>
+                <p class="listen-hint">Tap to listen · Higher Ground</p>
+            </div>
+            <div class="music-card">
+                <h3>Smooth grooves</h3>
+                <p>Infectious rhythms and basslines that make standing still optional.</p>
+                <p class="listen-hint">Tap to listen · I Can't Make You Love Me</p>
+            </div>
+            <div class="music-card">
+                <h3>Live experience</h3>
+                <p>Dynamic performances built for rooms that want to feel something.</p>
+                <p class="listen-hint">Tap to listen · Live cut</p>
+            </div>
+        </div>
+        <audio id="classic-soul-audio" preload="metadata" class="music-audio">
+            <source src="higher-love.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="pop-favorites-audio" preload="metadata" class="music-audio">
+            <source src="higher-ground.m4a" type="audio/mp4">
+        </audio>
+        <audio id="smooth-grooves-audio" preload="metadata" class="music-audio">
+            <source src="i-cant-make-you-love-me.m4a" type="audio/mp4">
+        </audio>
+        <audio id="live-experience-audio" preload="metadata" class="music-audio">
+            <source src="i cant make you love me.m4a" type="audio/mp4">
+        </audio>
+        <div id="music-player-status" class="music-player-status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="photos" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">Moments under the lights</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item active">
+                <img src="Jason_Plus_the_MLC_2021.JPG" alt="Jason Hackner Music live">
+            </div>
+            <div class="gallery-item">
+                <img src="artist-identity-09.jpg" alt="Jason Hackner — artist identity">
+            </div>
+            <div class="gallery-item">
+                <img src="parker1.jpeg" alt="Bass groove">
+            </div>
+            <div class="gallery-item">
+                <img src="gman1.jpg" alt="Guitar on stage">
+            </div>
+            <div class="gallery-item">
+                <img src="tosco_2022_christmas_pic.JPG" alt="Holiday stage moment">
+            </div>
+            <div class="gallery-item">
+                <img src="JASON_AND_THE_MLC_036.JPG" alt="Jason Hackner performing">
+            </div>
+        </div>
+        <div class="gallery-controls">
+            <button class="gallery-arrow gallery-prev" type="button">Prev</button>
+            <div class="gallery-dots" aria-label="Gallery navigation"></div>
+            <button class="gallery-arrow gallery-next" type="button">Next</button>
+        </div>
+    </section>
+
+    <section id="watch" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">New music by Jason Hackner</h2>
+            <p class="section-subtitle">Lesson in Love</p>
+        </div>
+        <div class="video-embed-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/_5lXGsdVZtw?rel=0" title="Lesson in Love — Jason Hackner" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="merch" class="reveal">
+        <div class="merch-wrap">
+            <div class="section-header">
+                <h2 class="section-title">Merch</h2>
+                <p class="section-subtitle">Wear the sound</p>
+            </div>
+            <div class="coming-soon-wrapper">
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-badge">Coming soon</div>
+                    <p class="coming-soon-text">Online store launching soon. Merch will be available at shows and online.</p>
+                    <p class="coming-soon-subtext">Reach out for pre-orders or questions.</p>
+                </div>
+                <div class="merch-grid blurred">
+                    <div class="merch-card">
+                        <div class="merch-media">
+                            <span class="merch-badge">Hoodie</span>
+                            <img src="merch-hoodie.png" alt="Jason Hackner Music hoodie">
+                        </div>
+                        <div class="merch-body">
+                            <div class="merch-title">Premium Hoodie</div>
+                            <div class="merch-desc">Soft feel, stage-ready warmth.</div>
+                            <div class="merch-meta">
+                                <div class="merch-price">$59.99</div>
+                                <div class="section-subtitle" style="margin:0;">Unisex</div>
+                            </div>
+                            <div class="merch-actions">
+                                <a class="btn-primary checkout-trigger" href="#" role="button" data-merch-item="HOODIE" data-merch-name="Premium Hoodie" data-merch-price="59.99">Buy with Stripe</a>
+                                <a class="btn-secondary" href="#contact">Questions</a>
+                            </div>
+                            <details class="merch-details"><summary>Pricing &amp; details</summary><ul></ul></details>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <div class="merch-media">
+                            <span class="merch-badge">Mug</span>
+                            <img src="merch-mug.png" alt="Jason Hackner Music mug">
+                        </div>
+                        <div class="merch-body">
+                            <div class="merch-title">Coffee Mug (15oz)</div>
+                            <div class="merch-desc">For rehearsal nights and early gigs.</div>
+                            <div class="merch-meta">
+                                <div class="merch-price">$16.99</div>
+                                <div class="section-subtitle" style="margin:0;">Ceramic</div>
+                            </div>
+                            <div class="merch-actions">
+                                <a class="btn-primary checkout-trigger" href="#" role="button" data-merch-item="MUG" data-merch-name="Coffee Mug (15oz)" data-merch-price="16.99">Buy with Stripe</a>
+                                <a class="btn-secondary" href="#contact">Questions</a>
+                            </div>
+                            <details class="merch-details"><summary>Pricing &amp; details</summary><ul></ul></details>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <div class="merch-media">
+                            <span class="merch-badge">Tote</span>
+                            <img src="merch-tote.png" alt="Jason Hackner Music tote">
+                        </div>
+                        <div class="merch-body">
+                            <div class="merch-title">Jazz Tote Bag</div>
+                            <div class="merch-desc">Everyday carry with vintage energy.</div>
+                            <div class="merch-meta">
+                                <div class="merch-price">$28.99</div>
+                                <div class="section-subtitle" style="margin:0;">All-over print</div>
+                            </div>
+                            <div class="merch-actions">
+                                <a class="btn-primary checkout-trigger" href="#" role="button" data-merch-item="TOTE" data-merch-name="Jazz Tote Bag" data-merch-price="28.99">Buy with Stripe</a>
+                                <a class="btn-secondary" href="#contact">Questions</a>
+                            </div>
+                            <details class="merch-details"><summary>Pricing &amp; details</summary><ul></ul></details>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <div class="merch-media">
+                            <span class="merch-badge">Sticker</span>
+                            <img src="merch-sticker.png" alt="Jason Hackner Music sticker">
+                        </div>
+                        <div class="merch-body">
+                            <div class="merch-title">Vinyl Record Sticker (3×3)</div>
+                            <div class="merch-desc">Clean, durable vinyl — perfect show add-on.</div>
+                            <div class="merch-meta">
+                                <div class="merch-price">$6.99</div>
+                                <div class="section-subtitle" style="margin:0;">3×3</div>
+                            </div>
+                            <div class="merch-actions">
+                                <a class="btn-primary checkout-trigger" href="#" role="button" data-merch-item="STICKER" data-merch-name="Vinyl Record Sticker (3×3)" data-merch-price="6.99">Buy with Stripe</a>
+                                <a class="btn-secondary" href="#contact">Questions</a>
+                            </div>
+                            <details class="merch-details"><summary>Pricing &amp; details</summary><ul></ul></details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="merch-note">Checkout collects your info and saves it with your payment record.</p>
+        </div>
+    </section>
+
+    <div id="checkout-overlay" class="checkout-overlay" aria-hidden="true">
+        <div class="checkout-modal" role="dialog" aria-labelledby="checkout-title" aria-modal="true">
+            <h3 id="checkout-title">Checkout</h3>
+            <form id="checkout-form" class="checkout-form" novalidate>
+                <input type="hidden" name="item" id="checkout-item" value="">
+                <div class="form-group">
+                    <label for="checkout-product">Item</label>
+                    <input type="text" id="checkout-product" readonly disabled value="" style="opacity:0.9;">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-first">First name *</label>
+                        <input type="text" name="first_name" id="checkout-first" required placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-last">Last name *</label>
+                        <input type="text" name="last_name" id="checkout-last" required placeholder="Last name">
+                    </div>
+                </div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="checkout-email">Email *</label>
+                        <input type="email" name="email" id="checkout-email" required placeholder="you@example.com">
+                    </div>
+                </div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="checkout-phone">Phone</label>
+                        <input type="tel" name="phone" id="checkout-phone" placeholder="(555) 123-4567">
+                    </div>
+                </div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="checkout-birthday">Birthday</label>
+                        <input type="date" name="birthday" id="checkout-birthday">
+                    </div>
+                </div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="checkout-address1">Address line 1 *</label>
+                        <input type="text" name="address_line1" id="checkout-address1" required placeholder="Street address">
+                    </div>
+                </div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="checkout-address2">Address line 2</label>
+                        <input type="text" name="address_line2" id="checkout-address2" placeholder="Apt, suite, etc.">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-city">City *</label>
+                        <input type="text" name="city" id="checkout-city" required placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-state">State</label>
+                        <input type="text" name="state" id="checkout-state" placeholder="State">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-postcode">ZIP / Postcode *</label>
+                        <input type="text" name="postcode" id="checkout-postcode" required placeholder="ZIP">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-country">Country *</label>
+                        <input type="text" name="country" id="checkout-country" required placeholder="US" value="US">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-quantity">Quantity</label>
+                    <input type="number" name="quantity" id="checkout-quantity" min="1" max="10" value="1">
+                </div>
+                <p class="error-msg" id="checkout-error"></p>
+                <div class="checkout-actions">
+                    <button type="button" class="btn-cancel" id="checkout-cancel">Cancel</button>
+                    <button type="submit" class="btn-pay" id="checkout-submit">Continue to payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section id="contact" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Get in touch</h2>
+            <p class="section-subtitle">Booking &amp; inquiries</p>
+        </div>
+        <div class="gigsalad-badges">
+            <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer"><img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/best-of/black/best-of--black.2.svg" alt="Best of GigSalad Top 40 Bands" height="128" width="128"></a>
+            <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer"><img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/read-reviews/black/read-reviews--black.2.svg" alt="Read reviews on GigSalad" height="100" width="300" onerror="this.src='https://www.gigsalad.com/images/svg/standalone/promokit-links/read-reviews/read-reviews.2.svg'"></a>
+        </div>
+        <p>Interested in booking Jason Hackner Music for your event, venue, or festival? Book through GigSalad or reach out directly.</p>
+        <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer" class="cta-button cta-primary">Book on GigSalad</a>
+        <br><br>
+        <a href="mailto:jasonhacknermusic@gmail.com" class="contact-email">jasonhacknermusic@gmail.com</a>
+
+        <div class="mailchimp-signup">
+            <h3>Stay connected</h3>
+            <p>Join the list for shows, new music, and updates.</p>
+            <form action="https://jasonplusproductions.us21.list-manage.com/subscribe/post?u=e949178d43c9daeac76a0e356&amp;id=5bc8b48dc0&amp;f_id=004638e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="mailchimp-form validate" target="_blank" novalidate>
+                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email address" required>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_5bc8b48dc0" tabindex="-1" value="">
+                </div>
+                <button type="submit" id="mc-embedded-subscribe">Subscribe</button>
+            </form>
+            <div id="mailchimp-message" class="mailchimp-message"></div>
+        </div>
+
+        <div class="contact-photo-row" aria-hidden="true">
+            <img src="Jason_Plus_the_MLC_2021.JPG" alt="">
+            <img src="JASON_AND_THE_MLC_036.JPG" alt="">
+            <img src="artist-identity-06.jpg" alt="Jason Hackner — artist identity">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <p>&copy; 2026 Jason Hackner Music. Part of <a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Jason Plus Productions</a>.</p>
+            <p class="footer-sublinks">
+                <a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Main site</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://theatre.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Interactive Theatre</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://vocalstudio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Vocal Studio</a>
+            </p>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/JasonPlusTheMLC" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+            <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer" aria-label="GigSalad">G</a>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            if (!slides.length) return;
+            slides[currentSlide]?.classList.remove('active');
+            indicators[currentSlide]?.classList.remove('active');
+            currentSlide = index;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide]?.classList.add('active');
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function startSlideshow() { slideInterval = setInterval(nextSlide, 6000); }
+        function resetSlideshow() { clearInterval(slideInterval); startSlideshow(); }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => { goToSlide(index); resetSlideshow(); });
+        });
+        if (slides.length > 1) startSlideshow();
+
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        mobileToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') { e.preventDefault(); return; }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const checkoutOverlay = document.getElementById('checkout-overlay');
+        const checkoutForm = document.getElementById('checkout-form');
+        const checkoutItem = document.getElementById('checkout-item');
+        const checkoutProduct = document.getElementById('checkout-product');
+        const checkoutError = document.getElementById('checkout-error');
+        const checkoutSubmit = document.getElementById('checkout-submit');
+        const checkoutCancel = document.getElementById('checkout-cancel');
+
+        function openCheckout(item, productName, price) {
+            if (!checkoutOverlay || !checkoutForm) return;
+            checkoutForm.reset();
+            checkoutItem.value = item;
+            checkoutProduct.value = productName + ' — $' + price;
+            checkoutError.textContent = '';
+            checkoutError.classList.remove('visible');
+            checkoutOverlay.classList.add('open');
+            checkoutOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            if (!checkoutOverlay) return;
+            checkoutOverlay.classList.remove('open');
+            checkoutOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        checkoutOverlay.addEventListener('click', (e) => { if (e.target === checkoutOverlay) closeCheckout(); });
+        if (checkoutCancel) checkoutCancel.addEventListener('click', closeCheckout);
+
+        document.querySelectorAll('.checkout-trigger').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openCheckout(
+                    btn.getAttribute('data-merch-item') || '',
+                    btn.getAttribute('data-merch-name') || '',
+                    btn.getAttribute('data-merch-price') || ''
+                );
+            });
+        });
+
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                checkoutError.textContent = '';
+                checkoutError.classList.remove('visible');
+                checkoutSubmit.disabled = true;
+                const formData = new FormData(checkoutForm);
+                const body = {
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone') || undefined,
+                    birthday: formData.get('birthday') || undefined,
+                    address_line1: formData.get('address_line1'),
+                    address_line2: formData.get('address_line2') || undefined,
+                    city: formData.get('city'),
+                    state: formData.get('state') || undefined,
+                    postcode: formData.get('postcode'),
+                    country: formData.get('country') || 'US',
+                    item: formData.get('item'),
+                    quantity: parseInt(formData.get('quantity'), 10) || 1,
+                };
+                try {
+                    const res = await fetch('/api/create-checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body),
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok) {
+                        const msg = data.error || 'Checkout failed. Try again or email us.';
+                        checkoutError.textContent = data.detail ? msg + ' — ' + data.detail : msg;
+                        checkoutError.classList.add('visible');
+                        checkoutSubmit.disabled = false;
+                        return;
+                    }
+                    if (data.url) { window.location.href = data.url; return; }
+                    checkoutError.textContent = 'No payment link received.';
+                    checkoutError.classList.add('visible');
+                } catch (err) {
+                    checkoutError.textContent = 'Network error. Check your connection or email us to order.';
+                    checkoutError.classList.add('visible');
+                }
+                checkoutSubmit.disabled = false;
+            });
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => revealObserver.observe(el));
+        } else {
+            revealElements.forEach(el => el.classList.add('visible'));
+        }
+
+        const galleryItems = document.querySelectorAll('.gallery-grid .gallery-item');
+        const galleryPrev = document.querySelector('.gallery-prev');
+        const galleryNext = document.querySelector('.gallery-next');
+        const galleryDotsContainer = document.querySelector('.gallery-dots');
+        let currentGalleryIndex = 0;
+
+        if (galleryItems.length > 0 && galleryPrev && galleryNext && galleryDotsContainer) {
+            galleryItems.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'gallery-dot' + (index === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to photo ${index + 1}`);
+                dot.addEventListener('click', () => goToGallery(index));
+                galleryDotsContainer.appendChild(dot);
+            });
+            const galleryDots = galleryDotsContainer.querySelectorAll('.gallery-dot');
+            function goToGallery(index) {
+                galleryItems[currentGalleryIndex].classList.remove('active');
+                galleryDots[currentGalleryIndex].classList.remove('active');
+                currentGalleryIndex = index;
+                if (currentGalleryIndex >= galleryItems.length) currentGalleryIndex = 0;
+                if (currentGalleryIndex < 0) currentGalleryIndex = galleryItems.length - 1;
+                galleryItems[currentGalleryIndex].classList.add('active');
+                galleryDots[currentGalleryIndex].classList.add('active');
+            }
+            galleryPrev.addEventListener('click', () => goToGallery(currentGalleryIndex - 1));
+            galleryNext.addEventListener('click', () => goToGallery(currentGalleryIndex + 1));
+        }
+
+        const musicCards = document.querySelectorAll('#music .music-card');
+        const musicConfig = [
+            { audioId: 'classic-soul-audio' },
+            { audioId: 'pop-favorites-audio' },
+            { audioId: 'smooth-grooves-audio' },
+            { audioId: 'live-experience-audio' }
+        ];
+        let currentAudio = null;
+        const musicPlayerStatus = document.getElementById('music-player-status');
+
+        musicCards.forEach((card, index) => {
+            const config = musicConfig[index];
+            if (!config) return;
+            const audio = document.getElementById(config.audioId);
+            if (!audio) return;
+            card.style.cursor = 'pointer';
+
+            const setStatus = (html) => {
+                if (!musicPlayerStatus) return;
+                musicPlayerStatus.classList.add('visible');
+                musicPlayerStatus.innerHTML = html;
+            };
+            const getSrc = () => {
+                const sourceEl = audio.querySelector('source');
+                return (sourceEl && sourceEl.getAttribute('src')) || audio.currentSrc || '';
+            };
+            const pauseCurrent = () => {
+                if (currentAudio && currentAudio !== audio) currentAudio.pause();
+            };
+
+            card.addEventListener('click', () => {
+                const src = getSrc();
+                setStatus(`<strong>Selected:</strong> ${src || '(no src found)'} <span style="opacity:.75">| loading…</span>`);
+                if (audio.paused) {
+                    pauseCurrent();
+                    audio.muted = false;
+                    audio.volume = 1;
+                    audio.load();
+                    audio.play().catch(() => {
+                        setStatus(`<strong>Could not start audio.</strong> Try again or check that the file loads.`);
+                    });
+                } else {
+                    audio.pause();
+                }
+            });
+
+            audio.addEventListener('play', () => {
+                pauseCurrent();
+                currentAudio = audio;
+                setStatus(`<strong>Playing:</strong> ${getSrc() || '(unknown)'}`);
+            });
+            audio.addEventListener('pause', () => {
+                if (currentAudio === audio) setStatus(`<strong>Paused:</strong> ${getSrc() || '(unknown)'}`);
+            });
+            audio.addEventListener('ended', () => {
+                if (currentAudio === audio) setStatus(`<strong>Ended:</strong> ${getSrc() || '(unknown)'}`);
+            });
+            audio.addEventListener('error', () => {
+                const src = audio.currentSrc || (audio.querySelector('source') && audio.querySelector('source').src) || '';
+                setStatus(`<strong>Audio error.</strong> Could not load: ${src || '(unknown)'}`);
+            });
+        });
+
+        const mailchimpForm = document.getElementById('mc-embedded-subscribe-form');
+        const mailchimpMessage = document.getElementById('mailchimp-message');
+        if (mailchimpForm) {
+            mailchimpForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('mce-EMAIL').value;
+                if (!email || !email.includes('@')) {
+                    mailchimpMessage.className = 'mailchimp-message error';
+                    mailchimpMessage.textContent = 'Please enter a valid email address.';
+                    return;
+                }
+                mailchimpForm.submit();
+                mailchimpMessage.className = 'mailchimp-message success';
+                mailchimpMessage.textContent = 'Thank you for subscribing!';
+                mailchimpForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
