@@ -485,6 +485,77 @@
             opacity: 1;
         }
 
+        /* Latest news / press release */
+        #news {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #news .section-header {
+            text-align: center;
+            margin-bottom: 2.25rem;
+        }
+
+        .news-card {
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            padding: 2.5rem 2.75rem;
+            box-shadow: 0 8px 24px rgba(26, 23, 20, 0.06);
+        }
+
+        .news-kicker {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 0.65rem;
+        }
+
+        .news-date {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .news-headline {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.55rem, 3vw, 2.1rem);
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 1.35rem;
+        }
+
+        .news-body p {
+            color: var(--ink-soft);
+            font-size: 1.02rem;
+            font-weight: 500;
+            margin-bottom: 1.1rem;
+        }
+
+        .news-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-contact {
+            margin-top: 1.75rem;
+            padding-top: 1.35rem;
+            border-top: 1px solid var(--line);
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            font-weight: 600;
+        }
+
+        .news-contact a {
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .news-contact a:hover { color: var(--amber); }
+
         /* Music */
         #music {
             max-width: none;
@@ -1119,6 +1190,7 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
             <li><a href="#music">Music</a></li>
             <li><a href="#photos">Photos</a></li>
             <li><a href="#watch">Watch</a></li>
@@ -1173,6 +1245,30 @@
             </div>
             <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer" class="cta-button">Book Jason Hackner</a>
         </div>
+    </section>
+
+    <section id="news" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Latest news</h2>
+            <p class="section-subtitle">Press &amp; announcements</p>
+        </div>
+        <article class="news-card press-release">
+            <p class="news-kicker">For immediate release</p>
+            <p class="news-date">Charlotte, NC &mdash; August 19, 2026</p>
+            <h3 class="news-headline">Jason Hackner Music Launches Under New Name, Bringing Classic Soul &amp; Pop to Charlotte Stages</h3>
+            <div class="news-body">
+                <p>Award-winning vocalist <strong>Jason Hackner</strong> announces the launch of <strong>Jason Hackner Music</strong>, the next chapter for the Charlotte-based live act formerly known as Jason Plus the MLC. The rebrand reflects Hackner&rsquo;s vision as bandleader: hopeful, high-energy performances rooted in Motown warmth, R&amp;B groove, and pop favorites for venues, festivals, and private events across the Southeast.</p>
+                <p>&ldquo;I&rsquo;ve been grateful for every stage Jason Plus the MLC shared with our community,&rdquo; Hackner said. &ldquo;Jason Hackner Music is about putting the focus on the songs, the musicians, and the people in the room &mdash; classic soul and pop delivered with heart.&rdquo;</p>
+                <p>Jason Hackner Music features a rotating lineup of Charlotte&rsquo;s finest players, including collaborators Scott McLaughlin, Guillermo Villar, Parker Foley, Faithful Gwenhah, and others. The group performs staples from the Motown catalog through contemporary pop, tailored to each event with professional sound and crowd-connected leadership.</p>
+                <p>Hackner is a University of Michigan musical theater graduate, Chicago Idol and Vortex Chicago Grand Champion, and Jeff Award recipient whose credits include <em>Assassins</em>, <em>Pippin</em>, and <em>Titanic: The Musical</em>. He has performed with Spectrum, One Mean Sun, and Tosco Music Party, and offers vocal coaching through Jason Plus Productions.</p>
+                <p>Jason Hackner Music is now booking for 2026 and beyond. Event planners and venues may book through <a href="https://www.gigsalad.com/jason_plus_the_mlc_charlotte" target="_blank" rel="noopener noreferrer">GigSalad</a> or contact <a href="mailto:jasonhacknermusic@gmail.com">jasonhacknermusic@gmail.com</a>.</p>
+            </div>
+            <p class="news-contact">
+                <strong>Media contact:</strong> Jason Hackner &middot;
+                <a href="mailto:jasonhacknermusic@gmail.com">jasonhacknermusic@gmail.com</a> &middot;
+                <a href="https://themlc.jasonplusproductions.com/">themlc.jasonplusproductions.com</a>
+            </p>
+        </article>
     </section>
 
     <section id="music" class="reveal">
