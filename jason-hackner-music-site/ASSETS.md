@@ -1,26 +1,25 @@
-# Artist identity photos (pics 6 & 9)
+# Artist identity photos
 
-Copy these two files from your local folder into this directory **before deploy**:
+## Required (you supply from local folder)
 
-**Source folder (Windows):**
-```
-C:\Users\jaydh\suno generate\Artist Identity - Jason H
-```
+**Source:** `C:\Users\jaydh\suno generate\Artist Identity - Jason H`
 
-| Site filename | Which file | Used on site |
-|---------------|------------|--------------|
-| `artist-identity-06.jpg` | **Pic 6** — leather jacket, moody portrait | Footer row, 3rd thumbnail (above footer) |
-| `artist-identity-09.jpg` | **Pic 9** — suit with red tie | Gallery, slide 2 (replaces Mark Larson shot) |
+| Site filename | Your file | Used on site |
+|---------------|-----------|--------------|
+| `artist-identity-06.jpg` | **Pic 6** — leather jacket portrait | Footer row, 3rd thumbnail (above footer) |
+| `artist-identity-09.jpg` | **Pic 9** — suit with red tie | Gallery, slide 2 |
 
-Rename on copy if your files have different names — the HTML expects exactly:
-- `artist-identity-06.jpg`
-- `artist-identity-09.jpg`
+Place both files in the **same folder as `index.html`** (site root), not in `artist-identity/`.
 
-## Deploy
+## Included in this branch (live site assets)
 
-1. Copy all existing site assets from the live site (or your current deploy folder).
-2. Add the two identity files above.
-3. Replace `index.html` with this version.
-4. Redeploy to Vercel (same project as `themlc.jasonplusproductions.com`).
+- `index.html` — patched for identity pics 6 & 9
+- Performance photos: `Jason_Plus_the_MLC_2021.JPG`, `JASON_AND_THE_MLC_036.JPG`, `JASON_AND_THE_MLC_020.JPG`, `jason-hackner-headshot.jpg`
+- Band strip: `gman1.jpg`, `parker1.jpeg`, `tosco_2022_christmas_pic*.JPG`
+- Merch mockups: `merch-*.png`
+- Audio: `higher-love.mp3`, `higher-ground.m4a`, `i-cant-make-you-love-me.m4a`
+- `logo.png`
 
-Removed from the site: `20251215_153747.jpg` (Mark Larson) in footer and gallery.
+## Removed
+
+- `20251215_153747.jpg` (Mark Larson) — not shipped; no longer referenced in HTML
