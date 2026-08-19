@@ -21,6 +21,7 @@ export type SubscriptionStatus =
 
 export type Subscription = {
   id: string;
+  userId: string;
   name: string;
   billingAmount: number | null;
   currency: string;

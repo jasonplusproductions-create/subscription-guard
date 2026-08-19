@@ -11,7 +11,7 @@ import {
 } from "./subscription-form";
 
 export default async function SubscriptionsPage() {
-  const { user, subscriptions, error } = await getSubscriptions();
+  const { user, subscriptions, error, isSuperuser } = await getSubscriptions();
 
   if (!user) {
     return (

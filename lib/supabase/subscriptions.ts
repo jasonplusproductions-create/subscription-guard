@@ -1,4 +1,5 @@
 import { createClient } from "./server";
+import { isSuperuser } from "@/lib/superuser";
 import type {
   BillingInterval,
   Subscription,
@@ -19,6 +20,7 @@ type SubscriptionRow = {
 function toSubscription(row: SubscriptionRow): Subscription {
   return {
     id: row.id,
+    userId: row.user_id,
     name: row.name,
     billingAmount:
       row.billing_amount === null || row.billing_amount === undefined
@@ -43,13 +45,20 @@ export async function getSubscriptions() {
     return { user: null, subscriptions: [], error: userError };
   }
 
-  const { data, error } = await supabase
+  const isSuper = isSuperuser(user.email);
+
+  let query = supabase
     .from("subscriptions")
     .select(
       "id, user_id, name, billing_amount, currency, billing_interval, next_renewal_at, status"
     )
-    .eq("user_id", user.id)
     .order("name");
+
+  if (!isSuper) {
+    query = query.eq("user_id", user.id);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     return { user, subscriptions: [], error };
@@ -57,5 +66,5 @@ export async function getSubscriptions() {
 
   const subscriptions = (data as SubscriptionRow[]).map(toSubscription);
 
-  return { user, subscriptions, error: null };
+  return { user, subscriptions, error: null, isSuperuser: isSuper };
 }

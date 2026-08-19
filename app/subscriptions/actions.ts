@@ -83,7 +83,10 @@ function parseSubscriptionForm(
       return { error: "Enter a valid next renewal date." };
     }
     const parsed = new Date(`${dateRaw}T12:00:00.000Z`);
-    if (Number.isNaN(parsed.getTime())) {
+    if (
+      Number.isNaN(parsed.getTime()) ||
+      parsed.toISOString().slice(0, 10) !== dateRaw
+    ) {
       return { error: "Enter a valid next renewal date." };
     }
     nextRenewalAt = parsed.toISOString();
