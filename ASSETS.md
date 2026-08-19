@@ -20,6 +20,10 @@ Place both files in the **same folder as `index.html`** (site root), not in `art
 - Audio: `higher-love.mp3`, `higher-ground.m4a`, `i-cant-make-you-love-me.m4a`
 - `logo.png`
 
+## Press release
+
+- `press-release.md` — source copy for the **Latest news** section on the homepage (`#news` in `index.html`). Edit the markdown file, then mirror changes in `index.html` before deploy.
+
 ## Removed
 
 - `20251215_153747.jpg` (Mark Larson) — not shipped; no longer referenced in HTML
