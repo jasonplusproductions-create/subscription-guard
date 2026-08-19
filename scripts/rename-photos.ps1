@@ -1,5 +1,5 @@
 # Rename photos in the site folder to the exact filenames index.html expects.
-# Drop files with any common name — this script renames them before deploy.
+# Drop files with any common name - this script renames them before deploy.
 #
 #   cd C:\Users\jaydh\jason-hackner-music
 #   .\scripts\rename-photos.ps1
@@ -12,8 +12,6 @@ $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
 Set-Location $Root
 
-# Target filename => patterns matched against basename (case-insensitive regex)
-# First matching file in the folder wins (newest modified if multiple).
 $Rules = [ordered]@{
     "artist-identity-06.png" = @(
         "^pic[\s_-]*6\b",
@@ -83,7 +81,7 @@ function Test-RuleMatch {
 }
 
 Write-Host "Rename photos in: $Root" -ForegroundColor Cyan
-if ($WhatIf) { Write-Host "(WhatIf — no files changed)" -ForegroundColor Yellow }
+if ($WhatIf) { Write-Host "(WhatIf - no files changed)" -ForegroundColor Yellow }
 
 $images = Get-ImageFiles
 $usedSources = @{}
@@ -91,7 +89,6 @@ $usedSources = @{}
 foreach ($target in $Rules.Keys) {
     $targetPath = Join-Path $Root $target
     if ((Test-Path $targetPath) -and -not $WhatIf) {
-        # Already have correct name; skip unless a better rename candidate exists from loose files
         continue
     }
 
@@ -119,29 +116,25 @@ foreach ($target in $Rules.Keys) {
     Write-Host "Renamed: $($src.Name) -> $target" -ForegroundColor Green
 }
 
-# Warn about loose files that did not match any rule
 $remaining = Get-ImageFiles | Where-Object {
     $_.Name -notin $Rules.Keys -and
     $_.Name -notmatch '^(merch-|logo\.|tosco_2022_christmas_pic_me)'
 }
 if ($remaining) {
     Write-Host ""
-    Write-Host "Unmatched images (not renamed — add to folder with a name above or rename manually):" -ForegroundColor Yellow
+    Write-Host "Unmatched images (rename manually or add a matching name):" -ForegroundColor Yellow
     $remaining | ForEach-Object { Write-Host "  $($_.Name)" }
 }
 
 Write-Host ""
-Write-Host "Site expects these names (gallery / footer / hero):" -ForegroundColor Cyan
-@(
-    "Jason_Plus_the_MLC_2021.JPG   — gallery 1, footer 1",
-    "artist-identity-09.jpg        — gallery 2",
-    "parker1.jpeg                  — gallery 3",
-    "gman1.jpg                     — gallery 4",
-    "tosco_2022_christmas_pic.JPG  — gallery 5",
-    "JASON_AND_THE_MLC_036.JPG     — gallery 6",
-    "artist-identity-06.png        — footer 3",
-    "jason-hackner-headshot.jpg    — hero / footer 2"
-) | ForEach-Object { Write-Host "  $_" }
-
+Write-Host "Site expects these names:" -ForegroundColor Cyan
+Write-Host "  Jason_Plus_the_MLC_2021.JPG   - gallery 1, footer 1"
+Write-Host "  artist-identity-09.jpg        - gallery 2"
+Write-Host "  parker1.jpeg                  - gallery 3"
+Write-Host "  gman1.jpg                     - gallery 4"
+Write-Host "  tosco_2022_christmas_pic.JPG  - gallery 5"
+Write-Host "  JASON_AND_THE_MLC_036.JPG     - gallery 6"
+Write-Host "  artist-identity-06.png        - footer 3"
+Write-Host "  jason-hackner-headshot.jpg    - hero / footer 2"
 Write-Host ""
 Write-Host "Next: .\scripts\deploy.ps1" -ForegroundColor Cyan

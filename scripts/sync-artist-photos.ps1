@@ -1,8 +1,6 @@
-# Copy Artist Identity pics from Suno folder, rename to site names, optional deploy.
-# Usage:
+# Sync artist photos from Suno folder, rename, optional deploy.
 #   cd C:\Users\jaydh\jason-hackner-music
 #   .\scripts\sync-artist-photos.ps1
-#   .\scripts\sync-artist-photos.ps1 -Deploy
 
 param(
     [string]$Source = "C:\Users\jaydh\suno generate\Artist Identity - Jason H\images",
@@ -17,14 +15,12 @@ $candidates = @{
     "artist-identity-06.png" = @(
         "portrait-performance-clean.png",
         "portrait-performance-clean.jpg",
-        "Pic 6.png", "Pic 6.jpg", "pic6.png", "pic6.jpg",
-        "Pic6.png", "6.png"
+        "Pic 6.png", "Pic 6.jpg", "pic6.png", "pic6.jpg"
     )
     "artist-identity-09.jpg" = @(
         "profile-headshot-suit-tie.jpg",
         "profile-headshot-suit-tie.jpeg",
-        "Pic 9.jpg", "Pic 9.jpeg", "pic9.jpg",
-        "Pic9.jpg", "9.jpg"
+        "Pic 9.jpg", "Pic 9.jpeg", "pic9.jpg"
     )
 }
 
