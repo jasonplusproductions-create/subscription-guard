@@ -50,23 +50,23 @@ Vercel redeploys automatically when you **push to `main`** on GitHub (Git integr
 
 Folder: **`C:\Users\jaydh\jason-hackner-music`**
 
-1. Put or replace photos in that folder (same names as `index.html` — see `ASSETS.md`).
-2. Run **one** of these:
+1. Drop new photos in that folder (any common name — Pic 6, Pic 9, headshot, etc.).
+2. Run:
 
 ```powershell
 cd C:\Users\jaydh\jason-hackner-music
-.\scripts\deploy.ps1
-```
-
-Or double-click **`deploy.bat`** in that folder.
-
-Optional — copy Artist Identity pics from Suno folder, then deploy:
-
-```powershell
 .\scripts\deploy-all.ps1
 ```
 
-That runs `git add` → `commit` → `push origin HEAD:main`. Live site updates in ~1 minute.
+That **renames** files to site names, then **pushes** to GitHub. Vercel updates in ~1 minute.
+
+Or double-click **`deploy.bat`**.
+
+Preview renames only:
+
+```powershell
+.\scripts\rename-photos.ps1 -WhatIf
+```
 
 ### First-time setup (once)
 
