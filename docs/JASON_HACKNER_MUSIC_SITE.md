@@ -34,6 +34,16 @@ Copy from `C:\Users\jaydh\suno generate\Artist Identity - Jason H` into the site
 
 See `ASSETS.md` on the `jason-hackner-music` branch.
 
+## Work with Cline (not Cursor Cloud for this site)
+
+Open the cloned **`jason-hackner-music`** folder in **VS Code + Cline**. The export branch includes `.clinerules` with site-specific instructions (artist identity pics, no Subscription Guard scope).
+
+Example Cline task:
+
+*"Read .clinerules and ASSETS.md. Copy artist identity pic 6 and 9 into the site root, verify index.html, and walk me through Vercel deploy."*
+
+**Subscription Guard** app work stays in the `subscription-guard` repo — use its `.clinerules` → `AGENTS.md` + `NEXT_STEPS.md`.
+
 ## Do not add site files back into Subscription Guard
 
 Keep music site assets and deploy config out of `main` on this repo.
