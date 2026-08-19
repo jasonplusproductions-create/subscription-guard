@@ -20,6 +20,14 @@ Place both files in the **same folder as `index.html`** (site root), not in `art
 - Audio: `higher-love.mp3`, `higher-ground.m4a`, `i-cant-make-you-love-me.m4a`
 - `logo.png`
 
-## Removed
+## Automated deploy (Windows)
 
-- `20251215_153747.jpg` (Mark Larson) — not shipped; no longer referenced in HTML
+From `C:\Users\jaydh\jason-hackner-music`:
+
+| Command | What it does |
+|---------|----------------|
+| `.\scripts\deploy.ps1` | Commit all photo/html changes and push to GitHub |
+| `.\scripts\sync-artist-photos.ps1` | Copy Pic 6/9 from Suno folder into site filenames |
+| `.\scripts\deploy-all.ps1` | Sync + deploy |
+| Double-click `deploy.bat` | Same as deploy.ps1 |
+
