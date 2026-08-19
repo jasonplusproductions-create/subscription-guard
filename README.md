@@ -44,6 +44,48 @@ For **Subscription Guard** (the Next.js app), use the separate `subscription-gua
 
 ## Deploy (Vercel)
 
+Vercel redeploys automatically when you **push to `main`** on GitHub (Git integration). No manual Vercel step needed.
+
+### One-click deploy from your PC
+
+Folder: **`C:\Users\jaydh\jason-hackner-music`**
+
+1. Put or replace photos in that folder (same names as `index.html` — see `ASSETS.md`).
+2. Run **one** of these:
+
+```powershell
+cd C:\Users\jaydh\jason-hackner-music
+.\scripts\deploy.ps1
+```
+
+Or double-click **`deploy.bat`** in that folder.
+
+Optional — copy Artist Identity pics from Suno folder, then deploy:
+
+```powershell
+.\scripts\deploy-all.ps1
+```
+
+That runs `git add` → `commit` → `push origin HEAD:main`. Live site updates in ~1 minute.
+
+### First-time setup (once)
+
+```powershell
+cd C:\Users\jaydh\jason-hackner-music
+git remote -v
+# Should show jasonplusproductions-create/jason-hackner-music
+git branch -M main
+```
+
+If PowerShell blocks scripts:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+### GitHub Action (optional)
+
+`.github/workflows/deploy-vercel.yml` only runs if `VERCEL_TOKEN` secrets are set. **Git push → Vercel Git hook is enough** for most deploys.
+
 - Root: `.` (this folder)
 - No build command
-- `vercel.json` included
