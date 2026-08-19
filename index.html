@@ -1048,19 +1048,20 @@
 
         .contact-photo-row img {
             width: 120px;
-            height: 90px;
+            height: 100px;
             object-fit: cover;
             object-position: center center;
+            border-radius: 4px;
         }
 
-        .contact-photo-row img.footer-portrait {
-            object-position: center 22%;
-            object-position: center center;
+        /* Footer pic 2: studio headshot (no Mark) */
+        .contact-photo-row img.footer-thumb-headshot {
+            object-position: center 30%;
         }
 
-        .contact-photo-row img.footer-portrait {
-            object-position: center 22%;
-            opacity: 0.9;
+        /* Footer pic 3: performance portrait - face near top of file */
+        .contact-photo-row img.footer-thumb-portrait {
+            object-position: center top;
         }
 
         footer {
@@ -1116,7 +1117,7 @@
             #music, #photos, #merch { padding: 4.5rem 1.5rem; }
             footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
             .gallery-grid { height: 320px; }
-            .contact-photo-row img { width: 90px; height: 70px; }
+            .contact-photo-row img { width: 96px; height: 80px; }
         }
     </style>
 </head>
@@ -1475,8 +1476,8 @@
 
         <div class="contact-photo-row" aria-hidden="true">
             <img src="Jason_Plus_the_MLC_2021.JPG" alt="">
-            <img src="JASON_AND_THE_MLC_036.JPG" alt="">
-            <img src="artist-identity-06.png" alt="Jason Hackner â€” artist identity">
+            <img class="footer-thumb-headshot" src="jason-hackner-headshot.jpg" alt="Jason Hackner">
+            <img class="footer-thumb-portrait" src="artist-identity-06.png" alt="Jason Hackner - artist identity">
         </div>
     </section>
 
