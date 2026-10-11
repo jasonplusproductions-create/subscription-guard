@@ -214,7 +214,7 @@ migration as any new table, no new dependency without a clear reason.
 - [x] S2 Keep / Cancel / Decide-later on renewals (separate
       `renewal_decision` field, never replaces `status`) + migration
 - [x] S3 Renewals list and calendar views
-- [ ] S4 CSV import (preview then commit) and export, with price-change
+- [x] S4 CSV import (preview then commit) and export, with price-change
       detection
 - [ ] S5 Price-change history and duplicate/overlap detection (new tables,
       RLS in the same migration)

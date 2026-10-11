@@ -92,6 +92,9 @@ export default async function DashboardPage({ searchParams }: Props) {
         <Link href="/dashboard/calendar" className="hover:text-ink">
           Calendar
         </Link>
+        <Link href="/dashboard/import" className="hover:text-ink">
+          Import / export
+        </Link>
         <Link href="/dashboard/playbooks" className="hover:text-ink">
           Cancellation guides
         </Link>
