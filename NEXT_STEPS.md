@@ -193,3 +193,36 @@ See `docs/ULTIMATE_FEATURES_SCOPE.md` and `/dashboard/ultimate`.
 Do not begin virtual-card work (see dossier § "Virtual Card Track") without
 explicit human sign-off — it requires a card-issuing provider relationship
 that isn't part of this codebase's scope yet.
+
+## Port from Emergent build (added Oct 11, 2026)
+
+Decision: `main` (Next.js 14 + Supabase) is the canonical app. Port the good
+parts of the Emergent prototype (`subscription-guard-emergent`, FastAPI +
+Mongo) as native Next.js/Supabase features. Do NOT port its stack.
+
+Do not port (conflicts with AGENTS.md or is mocked): password login and TOTP
+2FA, Mongo/FastAPI backend, Emergent object storage and LLM key, Jev,
+mocked Gmail demo, mocked email.
+
+Rules that still apply to every slice: human-in-the-loop cancellation,
+`subscriptions.status` is the only source of truth, RLS in the same
+migration as any new table, no new dependency without a clear reason.
+
+- [ ] S1 Playbooks: ~33 merchant cancel guides as typed data in
+      `lib/playbooks/`, shown on `/dashboard/subscriptions/[id]/cancel`
+      and a searchable `/dashboard/playbooks`. No schema change.
+- [ ] S2 Keep / Cancel / Decide-later on renewals (separate
+      `renewal_decision` field, never replaces `status`) + migration
+- [ ] S3 Renewals list and calendar views
+- [ ] S4 CSV import (preview then commit) and export, with price-change
+      detection
+- [ ] S5 Price-change history and duplicate/overlap detection (new tables,
+      RLS in the same migration)
+- [ ] S6 Forecast: confirmed vs estimated spend kept distinct, plus
+      insights (plain Tailwind/SVG bars, no chart library)
+- [ ] S7 Activity log page (reads existing `audit_events`)
+- [ ] S8 Post-cancel monitoring prompts and follow-up reminders
+- [ ] S9 Onboarding and sample data
+- [ ] S10 AI-assisted drafts and Q&A. BLOCKED on human: needs an LLM API
+      key supplied as a server-only secret; drafts stay editable and
+      unsent until the user approves.
