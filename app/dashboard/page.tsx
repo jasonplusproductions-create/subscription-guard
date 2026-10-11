@@ -86,6 +86,12 @@ export default async function DashboardPage({ searchParams }: Props) {
         <Link href="/dashboard/settings" className="hover:text-ink">
           Settings
         </Link>
+        <Link href="/dashboard/renewals" className="hover:text-ink">
+          Renewals
+        </Link>
+        <Link href="/dashboard/calendar" className="hover:text-ink">
+          Calendar
+        </Link>
         <Link href="/dashboard/playbooks" className="hover:text-ink">
           Cancellation guides
         </Link>

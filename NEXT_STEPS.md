@@ -213,7 +213,7 @@ migration as any new table, no new dependency without a clear reason.
       and a searchable `/dashboard/playbooks`. No schema change.
 - [x] S2 Keep / Cancel / Decide-later on renewals (separate
       `renewal_decision` field, never replaces `status`) + migration
-- [ ] S3 Renewals list and calendar views
+- [x] S3 Renewals list and calendar views
 - [ ] S4 CSV import (preview then commit) and export, with price-change
       detection
 - [ ] S5 Price-change history and duplicate/overlap detection (new tables,
