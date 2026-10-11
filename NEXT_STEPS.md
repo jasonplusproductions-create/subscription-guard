@@ -226,3 +226,5 @@ migration as any new table, no new dependency without a clear reason.
 - [ ] S10 AI-assisted drafts and Q&A. BLOCKED on human: needs an LLM API
       key supplied as a server-only secret; drafts stay editable and
       unsent until the user approves.
+
+- [x] In-app reminders inbox (`/dashboard/reminders`): reads `notifications`, hides muted/snoozed/archived, no migration needed.
