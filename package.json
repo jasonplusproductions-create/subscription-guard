@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "setup:env": "node -e \"const fs=require('fs'); if(fs.existsSync('.env.local')) { console.log('.env.local already exists'); process.exit(0);} fs.copyFileSync('.env.example','.env.local'); console.log('Created .env.local from .env.example');\""
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
