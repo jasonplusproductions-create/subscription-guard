@@ -208,7 +208,7 @@ Rules that still apply to every slice: human-in-the-loop cancellation,
 `subscriptions.status` is the only source of truth, RLS in the same
 migration as any new table, no new dependency without a clear reason.
 
-- [ ] S1 Playbooks: ~33 merchant cancel guides as typed data in
+- [x] S1 Playbooks: ~33 merchant cancel guides as typed data in
       `lib/playbooks/`, shown on `/dashboard/subscriptions/[id]/cancel`
       and a searchable `/dashboard/playbooks`. No schema change.
 - [ ] S2 Keep / Cancel / Decide-later on renewals (separate
