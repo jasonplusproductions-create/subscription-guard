@@ -3,6 +3,7 @@
 import { logAuditEvent } from "@/lib/audit/log-event";
 import { findOrCreateMerchant, getMerchant } from "@/lib/merchants/find-or-create";
 import { syncRenewalNotifications } from "@/lib/notifications/sync-renewal-notifications";
+import { parseRenewalDecision } from "@/lib/subscriptions/renewal-decision";
 import {
   formDataToInput,
   validateSubscriptionForm,
@@ -296,4 +297,51 @@ export async function snoozeRemindersAction(formData: FormData) {
 
   revalidatePath(`/dashboard/subscriptions/${subscriptionId}`);
   redirect(`/dashboard/subscriptions/${subscriptionId}`);
+}
+
+/**
+ * Records the user's intent for the next renewal. Never touches
+ * `status` and never contacts a merchant. "cancel" only sends the user to
+ * the approval-gated cancel flow.
+ */
+export async function setRenewalDecisionAction(formData: FormData) {
+  const subscriptionId = String(formData.get("subscriptionId") ?? "");
+  const decision = parseRenewalDecision(formData.get("decision"));
+  const { supabase, user } = await requireUser();
+  const detail = `/dashboard/subscriptions/${subscriptionId}`;
+
+  if (!subscriptionId || !decision) {
+    redirect(`${detail}?error=${encodeURIComponent("Invalid decision.")}`);
+  }
+
+  const { error } = await supabase
+    .from("subscriptions")
+    .update({
+      renewal_decision: decision,
+      renewal_decision_at:
+        decision === "undecided" ? null : new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", subscriptionId)
+    .eq("user_id", user.id);
+
+  if (error) {
+    redirect(`${detail}?error=${encodeURIComponent(error.message)}`);
+  }
+
+  await logAuditEvent(supabase, {
+    userId: user.id,
+    action: "renewal_decision_set",
+    entityType: "subscription",
+    entityId: subscriptionId,
+    metadata: { decision },
+  });
+
+  revalidatePath(detail);
+  revalidatePath("/dashboard");
+
+  if (decision === "cancel") {
+    redirect(`${detail}/cancel`);
+  }
+  redirect(detail);
 }

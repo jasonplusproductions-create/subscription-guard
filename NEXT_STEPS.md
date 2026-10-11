@@ -211,7 +211,7 @@ migration as any new table, no new dependency without a clear reason.
 - [x] S1 Playbooks: ~33 merchant cancel guides as typed data in
       `lib/playbooks/`, shown on `/dashboard/subscriptions/[id]/cancel`
       and a searchable `/dashboard/playbooks`. No schema change.
-- [ ] S2 Keep / Cancel / Decide-later on renewals (separate
+- [x] S2 Keep / Cancel / Decide-later on renewals (separate
       `renewal_decision` field, never replaces `status`) + migration
 - [ ] S3 Renewals list and calendar views
 - [ ] S4 CSV import (preview then commit) and export, with price-change

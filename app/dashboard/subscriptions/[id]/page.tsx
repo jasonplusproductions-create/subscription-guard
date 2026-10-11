@@ -12,10 +12,15 @@ import {
   archiveSubscriptionAction,
   deleteSubscriptionAction,
   getSubscriptionForEdit,
+  setRenewalDecisionAction,
   snoozeRemindersAction,
   toggleRemindersMutedAction,
 } from "@/app/dashboard/subscriptions/actions";
 import { formatAnnualizedCost } from "@/lib/subscriptions/annualized-cost";
+import {
+  RENEWAL_DECISIONS,
+  renewalDecisionLabel,
+} from "@/lib/subscriptions/renewal-decision";
 import type { BillingInterval } from "@/lib/types/subscription";
 
 type Props = {
@@ -120,6 +125,37 @@ export default async function SubscriptionDetailPage({
           A charge was flagged after cancellation. Blocking a payment is not
           the same as canceling with the merchant.
         </p>
+      )}
+
+      {subscription.status !== "archived" && (
+        <section className="mb-6 rounded-md border border-ink/10 p-4">
+          <h2 className="mb-1 text-sm font-semibold uppercase tracking-wide text-ink/60">
+            Next renewal
+          </h2>
+          <p className="mb-3 text-sm text-ink/60">
+            Your call: {renewalDecisionLabel(subscription.renewal_decision)}.
+            This only records your intent. Nothing is sent to the merchant,
+            and choosing Cancel takes you to the approval step.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {RENEWAL_DECISIONS.map((d) => (
+              <form key={d.value} action={setRenewalDecisionAction}>
+                <input type="hidden" name="subscriptionId" value={params.id} />
+                <input type="hidden" name="decision" value={d.value} />
+                <button
+                  type="submit"
+                  className={
+                    (subscription.renewal_decision ?? "undecided") === d.value
+                      ? "rounded-md bg-accent px-3 py-1.5 text-sm text-paper"
+                      : "rounded-md border border-ink/20 px-3 py-1.5 text-sm hover:bg-ink/5"
+                  }
+                >
+                  {d.label}
+                </button>
+              </form>
+            ))}
+          </div>
+        </section>
       )}
 
       <EditSubscriptionForm subscriptionId={params.id} defaults={defaults} />
