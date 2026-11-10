@@ -33,6 +33,9 @@ export type SubscriptionRow = {
   trial_end_at: string | null;
   next_renewal_at: string | null;
   notes: string | null;
+  /** Optional until migration 20261011000000 is applied. */
+  renewal_decision?: "undecided" | "keep" | "cancel";
+  renewal_decision_at?: string | null;
   created_at: string;
   updated_at: string;
 };

@@ -7,6 +7,8 @@ import {
 } from "@/app/dashboard/subscriptions/[id]/cancel/actions";
 import { CancellationApprovalPanel } from "@/app/dashboard/subscriptions/[id]/cancel/cancellation-approval-panel";
 import { buildCancellationMessageDraft } from "@/lib/cancellation/message-draft";
+import { findPlaybook } from "@/lib/playbooks";
+import { PlaybookCard } from "@/lib/playbooks/playbook-card";
 
 type Props = {
   params: { id: string };
@@ -28,6 +30,8 @@ export default async function CancelSubscriptionPage({
     subscriptionName: subscription.name,
     accountEmail,
   });
+
+  const playbook = findPlaybook(merchant.name);
 
   const approved =
     Boolean(latestRequest?.user_approved_at) ||
@@ -74,6 +78,15 @@ export default async function CancelSubscriptionPage({
             again, or update the status once you have confirmation.
           </p>
         </div>
+      )}
+
+      {playbook && (
+        <section className="mb-8">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-ink/60">
+            How to cancel at {playbook.merchant}
+          </h2>
+          <PlaybookCard playbook={playbook} />
+        </section>
       )}
 
       <section className="mb-8">
