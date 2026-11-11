@@ -8,6 +8,7 @@ import {
 } from "@/lib/csv/subscription-csv";
 import { findOrCreateMerchant } from "@/lib/merchants/find-or-create";
 import { syncRenewalNotifications } from "@/lib/notifications/sync-renewal-notifications";
+import { recordPriceChange } from "@/lib/subscriptions/price-history";
 import { createClient } from "@/lib/supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
@@ -30,10 +31,17 @@ export type ImportState =
       csv?: string;
       rows?: PreviewRow[];
       newCount?: number;
+      priceChangedCount?: number;
     }
   | undefined;
 
-type Existing = { merchant: string; name: string; amount: number | null };
+type Existing = {
+  id: string;
+  merchant: string;
+  name: string;
+  amount: number | null;
+  currency: string;
+};
 
 function key(merchant: string, name: string): string {
   return `${merchant.trim().toLowerCase()}|${name.trim().toLowerCase()}`;
@@ -54,7 +62,7 @@ async function loadExisting(
 ): Promise<Map<string, Existing>> {
   const { data } = await supabase
     .from("subscriptions")
-    .select("name, billing_amount, merchants(name)")
+    .select("id, name, billing_amount, currency, merchants(name)")
     .eq("user_id", userId);
 
   const map = new Map<string, Existing>();
@@ -62,9 +70,11 @@ async function loadExisting(
     const m = s.merchants as { name?: string } | { name?: string }[] | null;
     const merchant = (Array.isArray(m) ? m[0]?.name : m?.name) ?? "";
     map.set(key(merchant, s.name), {
+      id: s.id,
       merchant,
       name: s.name,
       amount: s.billing_amount,
+      currency: s.currency ?? "USD",
     });
   }
   return map;
@@ -97,7 +107,7 @@ function classify(
     return {
       ...base,
       status: "price_changed",
-      note: `Already tracked at ${found.amount}; file says ${row.data.billingAmount}. Not imported. Edit the subscription to change the price.`,
+      note: `Tracked at ${found.amount}; file says ${row.data.billingAmount}. Importing updates the price and records the change.`,
     };
   }
   return { ...base, status: "duplicate", note: "Already tracked." };
@@ -129,6 +139,7 @@ export async function previewImportAction(
     csv,
     rows,
     newCount: rows.filter((r) => r.status === "new").length,
+    priceChangedCount: rows.filter((r) => r.status === "price_changed").length,
   };
 }
 
@@ -144,12 +155,57 @@ export async function commitImportAction(formData: FormData) {
   const existing = await loadExisting(supabase, user.id);
   const seen = new Set<string>();
   let created = 0;
+  let updated = 0;
   let failed = 0;
 
   for (const row of parsed.rows) {
     const c = classify(row, existing, seen);
-    if (c.status !== "new" || !row.data) continue;
+    if (c.status !== "new" && c.status !== "price_changed") continue;
+    if (!row.data) continue;
     const d = row.data;
+
+    if (c.status === "price_changed") {
+      const found = existing.get(key(d.merchantName, d.name));
+      if (!found) continue;
+
+      const { error } = await supabase
+        .from("subscriptions")
+        .update({
+          billing_amount: d.billingAmount,
+          currency: d.currency,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", found.id)
+        .eq("user_id", user.id);
+
+      if (error) {
+        failed++;
+        continue;
+      }
+
+      await recordPriceChange(supabase, {
+        userId: user.id,
+        subscriptionId: found.id,
+        oldAmount: found.amount,
+        newAmount: d.billingAmount,
+        currency: d.currency,
+        source: "csv_import",
+      });
+
+      await logAuditEvent(supabase, {
+        userId: user.id,
+        action: "subscription_price_changed",
+        entityType: "subscription",
+        entityId: found.id,
+        metadata: {
+          old_amount: found.amount,
+          new_amount: d.billingAmount,
+          via: "csv_import",
+        },
+      });
+      updated++;
+      continue;
+    }
 
     try {
       const merchantId = await findOrCreateMerchant(supabase, d.merchantName);
@@ -199,5 +255,7 @@ export async function commitImportAction(formData: FormData) {
   }
 
   revalidatePath("/dashboard");
-  redirect(`/dashboard/import?done=${created}&failed=${failed}`);
+  redirect(
+    `/dashboard/import?done=${created}&updated=${updated}&failed=${failed}`
+  );
 }

@@ -11,7 +11,7 @@ const STATUS_LABEL: Record<string, string> = {
   new: "Will import",
   invalid: "Has a problem",
   duplicate: "Skipped",
-  price_changed: "Price differs, skipped",
+  price_changed: "Price update",
 };
 
 export function ImportForm() {
@@ -47,6 +47,9 @@ export function ImportForm() {
         <section>
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-ink/60">
             Preview: {state.newCount} of {state.rows.length} will be added
+            {state.priceChangedCount
+              ? `, ${state.priceChangedCount} price update${state.priceChangedCount === 1 ? "" : "s"}`
+              : ""}
           </h2>
           <ul className="mb-4 divide-y divide-ink/10 rounded-md border border-ink/10 text-sm">
             {state.rows.map((r) => (
@@ -66,15 +69,18 @@ export function ImportForm() {
               </li>
             ))}
           </ul>
-          {state.newCount ? (
+          {state.newCount || state.priceChangedCount ? (
             <form action={commitImportAction}>
               <input type="hidden" name="csv" value={state.csv} />
               <button
                 type="submit"
                 className="rounded-md bg-accent px-4 py-2 text-sm text-paper hover:opacity-90"
               >
-                Add {state.newCount} subscription
-                {state.newCount === 1 ? "" : "s"}
+                Import {state.newCount ?? 0} new subscription
+                {(state.newCount ?? 0) === 1 ? "" : "s"}
+                {state.priceChangedCount
+                  ? ` and ${state.priceChangedCount} price update${state.priceChangedCount === 1 ? "" : "s"}`
+                  : ""}
               </button>
             </form>
           ) : (

@@ -4,6 +4,7 @@ import { logAuditEvent } from "@/lib/audit/log-event";
 import { findOrCreateMerchant, getMerchant } from "@/lib/merchants/find-or-create";
 import { syncRenewalNotifications } from "@/lib/notifications/sync-renewal-notifications";
 import { parseRenewalDecision } from "@/lib/subscriptions/renewal-decision";
+import { recordPriceChange } from "@/lib/subscriptions/price-history";
 import {
   formDataToInput,
   validateSubscriptionForm,
@@ -91,7 +92,7 @@ export async function updateSubscription(
 
   const { data: existing } = await supabase
     .from("subscriptions")
-    .select("id, merchant_id, status")
+    .select("id, merchant_id, status, billing_amount, currency")
     .eq("id", subscriptionId)
     .eq("user_id", user.id)
     .single();
@@ -133,12 +134,26 @@ export async function updateSubscription(
     return { error: error.message };
   }
 
+  const priceRecorded = await recordPriceChange(supabase, {
+    userId: user.id,
+    subscriptionId,
+    oldAmount: existing.billing_amount,
+    newAmount: d.billingAmount,
+    currency: d.currency,
+    source: "manual_edit",
+  });
+
   await logAuditEvent(supabase, {
     userId: user.id,
     action: "subscription_edited",
     entityType: "subscription",
     entityId: subscriptionId,
-    metadata: { name: d.name },
+    metadata: {
+      name: d.name,
+      ...(priceRecorded
+        ? { old_amount: existing.billing_amount, new_amount: d.billingAmount }
+        : {}),
+    },
   });
 
   const { data: prefs } = await supabase

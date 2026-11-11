@@ -18,6 +18,12 @@ import {
 } from "@/app/dashboard/subscriptions/actions";
 import { formatAnnualizedCost } from "@/lib/subscriptions/annualized-cost";
 import {
+  PRICE_CHANGE_SOURCE_LABELS,
+  formatPriceChange,
+  getPriceHistory,
+} from "@/lib/subscriptions/price-history";
+import { createClient } from "@/lib/supabase/server";
+import {
   RENEWAL_DECISIONS,
   renewalDecisionLabel,
 } from "@/lib/subscriptions/renewal-decision";
@@ -36,6 +42,7 @@ export default async function SubscriptionDetailPage({
   if (!data) notFound();
 
   const timeline = await getCancellationTimeline(params.id);
+  const priceHistory = await getPriceHistory(createClient(), params.id);
   const evidenceWithUrls = await Promise.all(
     timeline.evidence.map(async (e) => ({
       ...e,
@@ -159,6 +166,33 @@ export default async function SubscriptionDetailPage({
       )}
 
       <EditSubscriptionForm subscriptionId={params.id} defaults={defaults} />
+
+      <section className="mt-8 rounded-md border border-ink/10 p-4">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-ink/60">
+          Price history
+        </h2>
+        {priceHistory.length > 0 ? (
+          <ul className="divide-y divide-ink/10 text-sm">
+            {priceHistory.map((change) => (
+              <li
+                key={change.id}
+                className="flex items-center justify-between py-2"
+              >
+                <span className="font-medium">{formatPriceChange(change)}</span>
+                <span className="text-xs text-ink/60">
+                  {new Date(change.changed_at).toLocaleDateString()} ·{" "}
+                  {PRICE_CHANGE_SOURCE_LABELS[change.source] ?? change.source}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-ink/60">
+            No price changes recorded yet. Changing the amount here, or
+            importing a CSV with a different price, adds an entry.
+          </p>
+        )}
+      </section>
 
       <section className="mt-8 rounded-md border border-ink/10 p-4">
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-ink/60">

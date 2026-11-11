@@ -216,8 +216,10 @@ migration as any new table, no new dependency without a clear reason.
 - [x] S3 Renewals list and calendar views
 - [x] S4 CSV import (preview then commit) and export, with price-change
       detection
-- [ ] S5 Price-change history and duplicate/overlap detection (new tables,
-      RLS in the same migration)
+- [x] S5 Price-change history and duplicate/overlap detection (new tables,
+      RLS in the same migration): `subscription_price_changes` written on
+      subscription edit and CSV import, price history on
+      `/dashboard/subscriptions/[id]`, and `/dashboard/duplicates`
 - [ ] S6 Forecast: confirmed vs estimated spend kept distinct, plus
       insights (plain Tailwind/SVG bars, no chart library)
 - [ ] S7 Activity log page (reads existing `audit_events`)
