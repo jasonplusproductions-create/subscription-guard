@@ -1,6 +1,11 @@
 # Send due renewal reminders
 
-Automated via **Vercel Cron** → `GET /api/cron/send-reminders` (hourly).
+Automated via **Vercel Cron** → `GET /api/cron/send-reminders` (daily, 14:00 UTC).
+The Vercel plan this app deploys on allows only daily cron jobs, so the
+schedule is `0 14 * * *` rather than hourly. A 7-day or 3-day reminder is
+unaffected; a 24-hour reminder can fire up to ~24 hours early. If the account
+moves to a plan that allows hourly crons, change `vercel.json` back to
+`0 * * * *`.
 
 ## Required server env vars (Vercel / hosting)
 
