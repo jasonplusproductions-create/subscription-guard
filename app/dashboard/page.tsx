@@ -89,6 +89,9 @@ export default async function DashboardPage({ searchParams }: Props) {
         <Link href="/dashboard/reminders" className="hover:text-ink">
           Reminders
         </Link>
+        <Link href="/dashboard/activity" className="hover:text-ink">
+          Activity
+        </Link>
         <Link href="/dashboard/renewals" className="hover:text-ink">
           Renewals
         </Link>

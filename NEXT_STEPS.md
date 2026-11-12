@@ -223,7 +223,9 @@ migration as any new table, no new dependency without a clear reason.
 - [x] S6 Forecast: confirmed vs estimated spend kept distinct, plus
       insights (plain Tailwind/SVG bars, no chart library) — `/dashboard/forecast`,
       pure calculations in `lib/forecast/`
-- [ ] S7 Activity log page (reads existing `audit_events`)
+- [x] S7 Activity log page (reads existing `audit_events`) — `/dashboard/activity`,
+      newest first, filter by action and entity, links to the subscription,
+      50 per page. Read-only; no migration needed.
 - [ ] S8 Post-cancel monitoring prompts and follow-up reminders
 - [ ] S9 Onboarding and sample data
 - [ ] S10 AI-assisted drafts and Q&A. BLOCKED on human: needs an LLM API
