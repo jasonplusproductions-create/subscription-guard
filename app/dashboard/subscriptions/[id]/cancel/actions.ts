@@ -1,6 +1,7 @@
 "use server";
 
 import { logAuditEvent } from "@/lib/audit/log-event";
+import { schedulePostCancelFollowUps } from "@/lib/notifications/post-cancel-followups";
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -140,6 +141,21 @@ export async function markCancellationSentAction(formData: FormData) {
     entityId: requestId,
   });
 
+  // S8: start watching for charges after cancellation.
+  await schedulePostCancelFollowUps(supabase, {
+    userId: user.id,
+    subscriptionId,
+  });
+
+  await logAuditEvent(supabase, {
+    userId: user.id,
+    action: "post_cancel_monitoring_scheduled",
+    entityType: "subscription",
+    entityId: subscriptionId,
+    metadata: { status: "cancellation_submitted", source: "cancellation_marked_sent" },
+  });
+
+  revalidatePath("/dashboard/reminders");
   revalidatePath(`/dashboard/subscriptions/${subscriptionId}`);
   redirect(`/dashboard/subscriptions/${subscriptionId}/cancel?sent=1`);
 }
@@ -209,6 +225,27 @@ export async function updateCancellationStatusAction(formData: FormData) {
       attempted_at: now,
     });
   }
+
+  if (
+    newStatus === "cancellation_submitted" ||
+    newStatus === "cancellation_confirmed"
+  ) {
+    // S8: keep the charge checks going from the latest status change.
+    await schedulePostCancelFollowUps(supabase, {
+      userId: user.id,
+      subscriptionId,
+    });
+
+    await logAuditEvent(supabase, {
+      userId: user.id,
+      action: "post_cancel_monitoring_scheduled",
+      entityType: "subscription",
+      entityId: subscriptionId,
+      metadata: { status: newStatus, source: "cancellation_status_updated" },
+    });
+  }
+
+  revalidatePath("/dashboard/reminders");
 
   await logAuditEvent(supabase, {
     userId: user.id,

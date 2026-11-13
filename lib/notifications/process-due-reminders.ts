@@ -17,6 +17,17 @@ type DueNotification = {
   scheduled_for: string;
 };
 
+/**
+ * Only renewal reminders are emailed. Post-cancel charge checks (S8) are
+ * in-app only, answered from `/dashboard/reminders`, so the cron never sends a
+ * renewal-shaped email for them.
+ */
+const EMAILED_NOTIFICATION_TYPES = [
+  "renewal_7_days",
+  "renewal_3_days",
+  "renewal_24_hours",
+];
+
 export async function processDueReminders(
   supabase: SupabaseClient
 ): Promise<ProcessRemindersResult> {
@@ -35,6 +46,7 @@ export async function processDueReminders(
     .lte("scheduled_for", now)
     .is("sent_at", null)
     .eq("status", "scheduled")
+    .in("notification_type", EMAILED_NOTIFICATION_TYPES)
     .limit(100);
 
   if (error) {

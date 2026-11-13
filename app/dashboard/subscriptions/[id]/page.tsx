@@ -3,11 +3,15 @@ import { notFound } from "next/navigation";
 import { EditSubscriptionForm } from "@/app/dashboard/subscriptions/[id]/edit-subscription-form";
 import { CancellationTimeline } from "@/app/dashboard/subscriptions/[id]/cancellation-timeline";
 import {
-  flagChargeAfterCancelAction,
   getCancellationTimeline,
   getEvidenceSignedUrl,
   uploadEvidenceAction,
 } from "@/app/dashboard/subscriptions/[id]/evidence-actions";
+import { PostCancelChecklist } from "@/app/dashboard/subscriptions/[id]/post-cancel-checklist";
+import {
+  getPostCancelFollowUps,
+  isPostCancelStatus,
+} from "@/lib/notifications/post-cancel-followups";
 import {
   archiveSubscriptionAction,
   deleteSubscriptionAction,
@@ -31,7 +35,13 @@ import type { BillingInterval } from "@/lib/types/subscription";
 
 type Props = {
   params: { id: string };
-  searchParams: { error?: string; evidence?: string; flagged?: string };
+  searchParams: {
+    error?: string;
+    evidence?: string;
+    flagged?: string;
+    checked?: string;
+    checks?: string;
+  };
 };
 
 export default async function SubscriptionDetailPage({
@@ -42,7 +52,14 @@ export default async function SubscriptionDetailPage({
   if (!data) notFound();
 
   const timeline = await getCancellationTimeline(params.id);
-  const priceHistory = await getPriceHistory(createClient(), params.id);
+  const supabase = createClient();
+  const priceHistory = await getPriceHistory(supabase, params.id);
+  const postCancelFollowUps = isPostCancelStatus(data.subscription.status)
+    ? await getPostCancelFollowUps(supabase, {
+        userId: String(data.subscription.user_id),
+        subscriptionId: params.id,
+      })
+    : [];
   const evidenceWithUrls = await Promise.all(
     timeline.evidence.map(async (e) => ({
       ...e,
@@ -127,12 +144,23 @@ export default async function SubscriptionDetailPage({
         </p>
       )}
 
-      {subscription.status === "payment_detected_after_cancel" && (
-        <p className="mb-4 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
-          A charge was flagged after cancellation. Blocking a payment is not
-          the same as canceling with the merchant.
+      {searchParams.checked === "1" && (
+        <p className="mb-4 rounded-md border border-accent/30 bg-accent/10 p-3 text-sm">
+          Marked as checked — no charge found. Your reminder list is updated.
         </p>
       )}
+
+      {searchParams.checks === "scheduled" && (
+        <p className="mb-4 rounded-md border border-accent/30 bg-accent/10 p-3 text-sm">
+          Charge checks scheduled for 7 and 30 days from today.
+        </p>
+      )}
+
+      <PostCancelChecklist
+        subscriptionId={params.id}
+        status={subscription.status}
+        followUps={postCancelFollowUps}
+      />
 
       {subscription.status !== "archived" && (
         <section className="mb-6 rounded-md border border-ink/10 p-4">
@@ -315,19 +343,6 @@ export default async function SubscriptionDetailPage({
           attempts={timeline.attempts}
           evidence={timeline.evidence}
         />
-
-        {(subscription.status === "cancellation_confirmed" ||
-          subscription.status === "cancellation_submitted") && (
-          <form action={flagChargeAfterCancelAction} className="mt-6">
-            <input type="hidden" name="subscriptionId" value={params.id} />
-            <button
-              type="submit"
-              className="rounded-md border border-amber-400 px-3 py-1.5 text-sm text-amber-900 hover:bg-amber-50"
-            >
-              Flag charge after cancellation
-            </button>
-          </form>
-        )}
       </section>
     </main>
   );

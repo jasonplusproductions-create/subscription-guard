@@ -226,7 +226,12 @@ migration as any new table, no new dependency without a clear reason.
 - [x] S7 Activity log page (reads existing `audit_events`) — `/dashboard/activity`,
       newest first, filter by action and entity, links to the subscription,
       50 per page. Read-only; no migration needed.
-- [ ] S8 Post-cancel monitoring prompts and follow-up reminders
+- [x] S8 Post-cancel monitoring prompts and follow-up reminders: reaching
+      `cancellation_submitted` / `cancellation_confirmed` schedules 7-day and
+      30-day charge checks as `notifications` rows (no migration), prompted on
+      `/dashboard`, the subscription detail page checklist, and answered in
+      `/dashboard/reminders`; `payment_detected_after_cancel` stays visibly
+      distinct from `cancellation_confirmed`
 - [ ] S9 Onboarding and sample data
 - [ ] S10 AI-assisted drafts and Q&A. BLOCKED on human: needs an LLM API
       key supplied as a server-only secret; drafts stay editable and

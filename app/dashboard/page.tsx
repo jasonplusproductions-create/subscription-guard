@@ -7,6 +7,7 @@ import {
   needsAttentionFilter,
 } from "@/lib/dashboard/summary";
 import type { BillingInterval } from "@/lib/types/subscription";
+import { isPostCancelStatus } from "@/lib/notifications/post-cancel-followups";
 
 async function signOut() {
   "use server";
@@ -62,6 +63,12 @@ export default async function DashboardPage({ searchParams }: Props) {
   const visibleSubs = attentionOnly
     ? allSubs.filter(needsAttentionFilter)
     : allSubs;
+  // S8: cancellations that are out with the merchant — watch for a charge.
+  const postCancelSubs = allSubs.filter(
+    (s) =>
+      isPostCancelStatus(s.status) &&
+      s.status !== "payment_detected_after_cancel"
+  );
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
@@ -158,6 +165,22 @@ export default async function DashboardPage({ searchParams }: Props) {
           </p>
         </div>
       </div>
+
+      {postCancelSubs.length > 0 && (
+        <div className="mb-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          <p className="font-semibold">Watch for a charge after you cancelled</p>
+          <p className="mt-1">
+            {postCancelSubs.length === 1
+              ? `${postCancelSubs[0].name} is cancelled or being cancelled.`
+              : `${postCancelSubs.length} subscriptions are cancelled or being cancelled.`}{" "}
+            Check your statement for a charge — we prompt you 7 and 30 days
+            after the cancellation.{" "}
+            <Link href="/dashboard/reminders" className="underline">
+              Open reminders
+            </Link>
+          </p>
+        </div>
+      )}
 
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-xl font-semibold">Your subscriptions</h1>
