@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { flagChargeAfterCancelAction } from "@/app/dashboard/subscriptions/[id]/evidence-actions";
+import { confirmNoChargeAction } from "@/app/dashboard/subscriptions/[id]/post-cancel-actions";
 import { buildInbox, type InboxItem, type InboxRow } from "@/lib/notifications/inbox";
 import { createClient } from "@/lib/supabase/server";
 
@@ -14,7 +16,33 @@ function fmt(iso: string | null): string {
   });
 }
 
-function Row({ item }: { item: InboxItem }) {
+function PostCancelActions({ item }: { item: InboxItem }) {
+  return (
+    <div className="mt-2 flex flex-wrap gap-2">
+      <form action={confirmNoChargeAction}>
+        <input type="hidden" name="subscriptionId" value={item.subscriptionId} />
+        <input type="hidden" name="notificationId" value={item.id} />
+        <button
+          type="submit"
+          className="rounded-md border border-ink/20 px-2 py-1 text-xs hover:bg-ink/5"
+        >
+          No charge — mark checked
+        </button>
+      </form>
+      <form action={flagChargeAfterCancelAction}>
+        <input type="hidden" name="subscriptionId" value={item.subscriptionId} />
+        <button
+          type="submit"
+          className="rounded-md border border-amber-400 px-2 py-1 text-xs text-amber-900 hover:bg-amber-50"
+        >
+          I was charged
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function Row({ item, actionable }: { item: InboxItem; actionable: boolean }) {
   return (
     <li className="px-4 py-3">
       <Link
@@ -24,11 +52,20 @@ function Row({ item }: { item: InboxItem }) {
         {item.subscriptionName}
       </Link>{" "}
       <span className="text-ink/80">{item.message}</span>
+      {item.kind === "post_cancel" && (
+        <span className="ml-1 rounded border border-amber-300 bg-amber-50 px-1.5 py-0.5 text-[11px] text-amber-900">
+          after cancellation
+        </span>
+      )}
       <p className="text-xs text-ink/60">
         {item.renewsAt ? `Renews ${fmt(item.renewsAt)}. ` : ""}
-        Reminder date {fmt(item.when)}.
+        {item.kind === "post_cancel" ? "Check due" : "Reminder date"}{" "}
+        {fmt(item.when)}.
         {item.delivered ? " Also emailed." : ""}
       </p>
+      {item.kind === "post_cancel" && actionable && (
+        <PostCancelActions item={item} />
+      )}
     </li>
   );
 }
@@ -73,8 +110,9 @@ export default async function RemindersPage() {
       </Link>
       <h1 className="mb-2 text-xl font-semibold">Reminders</h1>
       <p className="mb-6 text-sm text-ink/60">
-        Renewal heads-ups for subscriptions you track. Muted, snoozed, and
-        archived subscriptions are left out. Nothing here contacts a merchant.
+        Renewal heads-ups, plus charge checks after you cancel. Muted, snoozed,
+        and archived subscriptions are left out. Nothing here contacts a
+        merchant, and flagging a charge never marks a subscription as cancelled.
       </p>
 
       {error && (
@@ -90,7 +128,7 @@ export default async function RemindersPage() {
         {due.length > 0 ? (
           <ul className="divide-y divide-ink/10 rounded-md border border-ink/10">
             {due.map((i) => (
-              <Row key={i.id} item={i} />
+              <Row key={i.id} item={i} actionable />
             ))}
           </ul>
         ) : (
@@ -107,7 +145,7 @@ export default async function RemindersPage() {
         {upcoming.length > 0 ? (
           <ul className="divide-y divide-ink/10 rounded-md border border-ink/10">
             {upcoming.slice(0, 30).map((i) => (
-              <Row key={i.id} item={i} />
+              <Row key={i.id} item={i} actionable={false} />
             ))}
           </ul>
         ) : (
